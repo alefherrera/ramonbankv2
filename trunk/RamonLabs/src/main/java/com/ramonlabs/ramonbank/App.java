@@ -13,6 +13,7 @@ import java.util.List;
  * Hello world!
  *
  */
+
 public class App 
 {
 	
@@ -26,6 +27,7 @@ public class App
     	
     	
     	//hola como erstas
+    	//bien vos?
     	for (Cliente cl :cliente.loadAll() )
     	{
     		System.out.println( cl.getApellido());
