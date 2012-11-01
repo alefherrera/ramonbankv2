@@ -1,0 +1,24 @@
+<!--<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+ <hibernate-configuration>
+	<session-factory>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">ale123</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/ramonbank</property>
+		<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+		<property name="show_sql">true</property>
+				
+		<mapping package="com.ramonlabs.ramonbank.dbaccess"/>
+		<mapping class="com.ramonlabs.ramonbank.dbaccess.Cliente" />
+		<mapping class="com.ramonlabs.ramonbank.dbaccess.Cuenta" />
+		<mapping class="com.ramonlabs.ramonbank.dbaccess.Movimiento" />
+		<mapping class="com.ramonlabs.ramonbank.dbaccess.PagoPrestamo" />
+		<mapping class="com.ramonlabs.ramonbank.dbaccess.PagoServicio" />
+		<mapping class="com.ramonlabs.ramonbank.dbaccess.Prestamo" />
+		<mapping class="com.ramonlabs.ramonbank.dbaccess.Transferencia" />
+		
+		
+	</session-factory>
+</hibernate-configuration> -->
