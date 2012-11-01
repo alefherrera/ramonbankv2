@@ -20,6 +20,7 @@ public class AltaClienteAction extends ActionSupport implements SessionAware {
 		if (dni == null || dni.isEmpty())
 			return ERROR;
 		return SUCCESS;
+		//s
 
 	}
 
