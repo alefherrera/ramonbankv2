@@ -25,7 +25,7 @@ public class App
     	Cliente cliente = (Cliente) ctx.getBean("clienteBean");
     	
     	
-    	
+    	//hola como erstas
     	for (Cliente cl :cliente.loadAll() )
     	{
     		System.out.println( cl.getApellido());
