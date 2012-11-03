@@ -1,6 +1,8 @@
 package com.ramonlabs.ramonbank.dbaccess;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -28,6 +30,12 @@ public class Cuenta extends TableBase<Cuenta> implements Serializable {
 	private double saldo;
 	@Column(name = "Descubierto")
 	private double descubierto;
+	@OneToMany(targetEntity=Movimiento.class,fetch=FetchType.EAGER,mappedBy="idCuenta")
+	private Set<Movimiento> movimientos = new HashSet<Movimiento>(0);
+	@OneToMany(targetEntity=PagoServicio.class,fetch=FetchType.EAGER,mappedBy="idServicio")
+	private Set<PagoServicio> pagoServicios = new HashSet<PagoServicio>(0);
+	@OneToMany(targetEntity=Prestamo.class,fetch=FetchType.EAGER,mappedBy="idCuenta")
+	private Set<Prestamo> prestamos = new HashSet<Prestamo>(0);
 	
 	/*@ManyToOne
 	@JoinColumn(name="idCliente")

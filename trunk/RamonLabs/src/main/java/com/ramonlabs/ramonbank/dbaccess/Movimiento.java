@@ -31,6 +31,7 @@ public class Movimiento extends TableBase<Movimiento> implements Serializable {
 	@Column(name = "Monto")
 	private double monto;
 	
+	
 	public int getId() {
 		return id;
 	}

@@ -2,6 +2,8 @@ package com.ramonlabs.ramonbank.dbaccess;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -30,6 +32,8 @@ public class Prestamo extends TableBase<Prestamo> implements Serializable {
 	private int idCliente;
 	@Column (name = "idCuenta")
 	private int idCuenta;
+	@OneToMany(targetEntity=PagoPrestamo.class,fetch=FetchType.EAGER,mappedBy="idPrestamo")
+	private Set<PagoPrestamo> pagoPrestamos = new HashSet<PagoPrestamo>(0);
 	
 	public int getId() {
 		return id;
