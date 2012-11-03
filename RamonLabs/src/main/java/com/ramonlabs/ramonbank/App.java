@@ -22,7 +22,7 @@ public class App
         	
     	String[] contexto = new String[] {"hibernate-spring.xml"};
     	ApplicationContext ctx = new ClassPathXmlApplicationContext(contexto);
-
+    	
     	Cliente cliente = (Cliente) ctx.getBean("clienteBean");
     	
     	
