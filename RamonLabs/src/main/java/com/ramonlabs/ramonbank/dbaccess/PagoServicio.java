@@ -25,6 +25,7 @@ public class PagoServicio extends TableBase<PagoServicio> implements Serializabl
 	@Column(name = "idServicio")
 	private int idServicio;
 	
+	
 	public int getId() {
 		return id;
 	}

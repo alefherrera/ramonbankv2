@@ -33,6 +33,8 @@ public class Cliente extends TableBase<Cliente> implements Serializable {
 	private String email;
 	@OneToMany(targetEntity=Cuenta.class,fetch=FetchType.EAGER,mappedBy="idCliente")
 	private Set<Cuenta> cuentas = new HashSet<Cuenta>(0);
+	@OneToMany(targetEntity=Prestamo.class,fetch=FetchType.EAGER,mappedBy="idCuenta")
+	private Set<Cuenta> Prestamo = new HashSet<Cuenta>(0);
 
 	public int getId() {
 		return id;

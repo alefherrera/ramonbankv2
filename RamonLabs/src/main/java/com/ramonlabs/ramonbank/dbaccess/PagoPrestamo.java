@@ -29,6 +29,7 @@ public class PagoPrestamo extends TableBase<PagoPrestamo> implements Serializabl
 	@Column(name = "Monto")
 	private double monto;
 	
+	
 	public int getId() {
 		return id;
 	}
