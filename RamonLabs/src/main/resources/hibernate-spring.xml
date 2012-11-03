@@ -16,8 +16,8 @@
 	<bean id="myDataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/ramonbank" />
-		<property name="username" value="root" />
+		<property name="url" value="jdbc:mysql://depositosoeste.no-ip.org:3306/ramonbank" />
+		<property name="username" value="bank" />
 		<property name="password" value="ale123" />
 
 	</bean>
