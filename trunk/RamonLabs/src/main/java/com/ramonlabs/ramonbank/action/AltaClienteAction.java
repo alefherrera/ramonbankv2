@@ -1,8 +1,12 @@
 package com.ramonlabs.ramonbank.action;
 
 import java.util.Map;
+import cliente.ClienteManager;
+import com.ramonlabs.ramonbank.dbaccess.Cliente;
 
 import org.apache.struts2.interceptor.SessionAware;
+
+import utils.OperationException;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -15,8 +19,16 @@ public class AltaClienteAction extends ActionSupport implements SessionAware {
 	private String apellido;
 
 	@Override
-	public String execute() throws Exception {
-		System.out.println(dni + " - " + nombre + " " + apellido);
+	public String execute() throws Exception, OperationException{
+		
+		//Cargo todo el cliente y lo mando a ClienteManager.Registro, esta clase valida cliente y devuelve una excepcion (OperationException) o grava en la db.
+		Cliente cliente = new Cliente();
+		cliente.setDni(dni);
+		cliente.setNombre(nombre);
+		cliente.setApellido(apellido);
+		
+		ClienteManager.Registro(cliente);
+		
 		if (dni == null || dni.isEmpty())
 			return ERROR;
 		return SUCCESS;
