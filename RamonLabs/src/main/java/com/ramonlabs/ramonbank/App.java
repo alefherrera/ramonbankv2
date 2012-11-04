@@ -3,6 +3,8 @@ package com.ramonlabs.ramonbank;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import utils.Contexto;
+
 import com.ramonlabs.ramonbank.dbaccess.Cliente;
 import com.ramonlabs.ramonbank.dbaccess.Cuenta;
 
@@ -20,10 +22,10 @@ public class App
     public static void main( String[] args )
     {  
         	
-    	String[] contexto = new String[] {"hibernate-spring.xml"};
-    	ApplicationContext ctx = new ClassPathXmlApplicationContext(contexto);
+    	//String[] contexto = new String[] {"hibernate-spring.xml"};
+    	//ApplicationContext ctx = new ClassPathXmlApplicationContext(contexto);
     	
-    	Cliente cliente = (Cliente) ctx.getBean("clienteBean");
+    	Cliente cliente = (Cliente) Contexto.getBean("clienteBean");//ctx.getBean("clienteBean");
     	
     	
     	//hola como erstas
