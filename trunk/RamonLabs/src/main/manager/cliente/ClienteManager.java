@@ -7,6 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.ramonlabs.ramonbank.dbaccess.Cliente;
 import com.ramonlabs.ramonbank.dbaccess.Parametro;
 
+import utils.Contexto;
 import utils.Enums;
 import utils.OperationException;
 import utils.Validator;
@@ -36,11 +37,9 @@ public class ClienteManager {
         
         
         
-        //TODO: VER QUE VERGA HACER CON ESTO ALE MEDIA PILA
-        String[] contexto = new String[] {"hibernate-spring.xml"};
-    	ApplicationContext ctx = new ClassPathXmlApplicationContext(contexto);
+        //TODO: VER QUE VERGA HACER CON ESTO ALE MEDIA PILA        
     	
-    	Cliente cliente2 = (Cliente) ctx.getBean("clienteBean");
+    	Cliente cliente2 = (Cliente) Contexto.getBean("clienteBean");
     	
         Parametro param = new Parametro("dni", cliente.getDni());
         
