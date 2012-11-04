@@ -8,6 +8,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import utils.Contexto;
 import utils.OperationException;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -24,10 +25,8 @@ public class AltaClienteAction extends ActionSupport implements SessionAware {
 	public String execute() throws Exception, OperationException{
 		
 		//Cargo todo el cliente y lo mando a ClienteManager.Registro, esta clase valida cliente y devuelve una excepcion (OperationException) o grava en la db.
-		String[] contexto = new String[] {"hibernate-spring.xml"};
-    	ApplicationContext ctx = new ClassPathXmlApplicationContext(contexto);
     	
-    	Cliente cliente = (Cliente) ctx.getBean("clienteBean");
+    	Cliente cliente = (Cliente) Contexto.getBean("clienteBean");
     	
 		cliente.setDni(dni);
 		cliente.setNombre(nombre);
