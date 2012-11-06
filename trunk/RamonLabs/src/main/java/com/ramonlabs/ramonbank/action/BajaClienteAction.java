@@ -1,19 +1,22 @@
 package com.ramonlabs.ramonbank.action;
 
 import java.util.Map;
-import cliente.ClienteManager;
-import com.ramonlabs.ramonbank.dbaccess.Cliente;
 import org.apache.struts2.interceptor.SessionAware;
+
 import utils.Contexto;
 import utils.OperationException;
 
-import com.opensymphony.xwork2.ActionSupport;
+import cliente.ClienteManager;
 
-public class AltaClienteAction extends ActionSupport implements SessionAware {
+import com.opensymphony.xwork2.ActionSupport;
+import com.ramonlabs.ramonbank.dbaccess.Cliente;
+
+public class BajaClienteAction extends ActionSupport implements SessionAware {
 
 	private static final long serialVersionUID = 1L;
 
 	private String dni;
+	//Dejo los siguientes campos para mostrar los datos de la personal que se eliminara.
 	private String nombre;
 	private String apellido;
 	private String direccion;
@@ -27,10 +30,6 @@ public class AltaClienteAction extends ActionSupport implements SessionAware {
     	Cliente cliente = (Cliente) Contexto.getBean("clienteBean");
     	
 		cliente.setDni(dni);
-		cliente.setNombre(nombre);
-		cliente.setApellido(apellido);
-		cliente.setDireccion(direccion);
-		cliente.setEmail(email);
 		
 		ClienteManager.Registro(cliente);
 		
@@ -39,20 +38,9 @@ public class AltaClienteAction extends ActionSupport implements SessionAware {
 		return SUCCESS;
 	}
 
-	public String getDireccion() {
-		return direccion;
-	}
+	public void setSession(Map<String, Object> arg0) {
+		// TODO Auto-generated method stub
 
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getDni() {
@@ -79,9 +67,20 @@ public class AltaClienteAction extends ActionSupport implements SessionAware {
 		this.apellido = apellido;
 	}
 
-	public void setSession(Map<String, Object> arg0) {
-		// TODO Auto-generated method stub
+	public String getDireccion() {
+		return direccion;
+	}
 
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

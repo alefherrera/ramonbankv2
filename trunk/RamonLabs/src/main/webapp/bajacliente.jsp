@@ -5,15 +5,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Crear Cliente</title>
+<title>Baja Cliente</title>
 </head>
 <body>
 <h1>Alta Cliente</h1>
-<s:form action="crearCliente">
+<s:form action="borrarCliente">
 
 		<table>
 			<tbody>
 				<tr>
+<!-- 				habria que poner los labels con los datos del cliente -->
 					<td>DNI:</td>
 					<td>
 					<s:textfield name="dni"></s:textfield>
@@ -23,28 +24,29 @@
 				<tr> 
 					<td>Nombre:</td>
 					<td>
-					<s:textfield name="nombre"></s:textfield>
+					
+					<s:label name="nombre"></s:label>
 					<!--<input type="text" name="nombre" class="required" />-->
 					</td>
 				</tr>
 				<tr>
 					<td>Apellido:</td>
 					<td>
-					<s:textfield	name="apellido"></s:textfield>
+<!-- 					<s:label	name="apellido"></s:label> -->
 					<!--<input type="text" name="apellido" class="required" />-->
 					</td>
 				</tr>
 				<tr>
 					<td>Direccion:</td>
 					<td>
-					<s:textfield	name="direccion"></s:textfield>
+<!-- 					<s:label	name="direccion"></s:label> -->
 					<!--<input type="text" name="apellido" class="required" />-->
 					</td>
 				</tr>
 				<tr>
 					<td>E-mail:</td>
 					<td>
-					<s:textfield	name="email"></s:textfield>
+<!-- 					<s:label	name="email"></s:label> -->
 					<!--<input type="text" name="apellido" class="required" />-->
 					</td>
 				</tr>

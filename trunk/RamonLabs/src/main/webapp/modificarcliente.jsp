@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Crear Cliente</title>
+<title>Modificar Cliente</title>
 </head>
 <body>
-<h1>Alta Cliente</h1>
+<h1>Modificar Cliente</h1>
 <s:form action="crearCliente">
 
 		<table>

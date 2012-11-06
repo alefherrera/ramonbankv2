@@ -9,6 +9,8 @@
 <body>
 <ul>
 <li><a href="altacliente">Alta</a></li>
+<li><a href="bajacliente">Baja</a></li>
+<li><a href="modificarcliente">Modificar</a></li>
 <li><a href="showclientes">Mostrar todos</a></li>
 
 </ul>
