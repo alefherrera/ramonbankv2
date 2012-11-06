@@ -27,6 +27,14 @@
 			<result>/altacliente.jsp</result>			
 		</action>
 		
+		<action name="bajacliente">
+			<result>/bajacliente.jsp</result>			
+		</action>
+		
+		<action name="modificarcliente">
+			<result>/modificarcliente.jsp</result>			
+		</action>
+		
 		<action name="showclientes">
 			<result>/showclientes.jsp</result>			
 		</action>
@@ -40,6 +48,16 @@
 		</action>
 	
 		<action name="crearCliente" class="com.ramonlabs.ramonbank.action.AltaClienteAction">
+			<result name="success">/index.jsp</result>			
+			<result name="error">/error.jsp</result>			
+		</action>
+		
+		<action name="borrarCliente" class="com.ramonlabs.ramonbank.action.BajaClienteAction">
+			<result name="success">/index.jsp</result>			
+			<result name="error">/error.jsp</result>			
+		</action>
+		
+		<action name="ModificarCliente" class="com.ramonlabs.ramonbank.action.BajaClienteAction">
 			<result name="success">/index.jsp</result>			
 			<result name="error">/error.jsp</result>			
 		</action>
