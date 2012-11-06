@@ -20,7 +20,7 @@
 					<!--<input type="text" name="dni" class="required number minlength" minlength="8" maxlength="8" />-->
 					</td>
 				</tr>
-				<tr>
+				<tr> 
 					<td>Nombre:</td>
 					<td>
 					<s:textfield name="nombre"></s:textfield>
