@@ -3,11 +3,7 @@ package com.ramonlabs.ramonbank.action;
 import java.util.Map;
 import cliente.ClienteManager;
 import com.ramonlabs.ramonbank.dbaccess.Cliente;
-
 import org.apache.struts2.interceptor.SessionAware;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import utils.Contexto;
 import utils.OperationException;
 
