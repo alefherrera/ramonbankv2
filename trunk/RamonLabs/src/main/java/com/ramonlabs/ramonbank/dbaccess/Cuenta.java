@@ -36,6 +36,8 @@ public class Cuenta extends TableBase<Cuenta> implements Serializable {
 	private Set<PagoServicio> pagoServicios = new HashSet<PagoServicio>(0);
 	@OneToMany(targetEntity=Prestamo.class,fetch=FetchType.EAGER,mappedBy="idCuenta")
 	private Set<Prestamo> prestamos = new HashSet<Prestamo>(0);
+	@Column(name = "Activo")
+	private boolean activo;
 	
 	/*@ManyToOne
 	@JoinColumn(name="idCliente")
@@ -76,6 +78,30 @@ public class Cuenta extends TableBase<Cuenta> implements Serializable {
 	}
 	public void setDescubierto(double descubierto) {
 		this.descubierto = descubierto;
+	}
+	public Set<Movimiento> getMovimientos() {
+		return movimientos;
+	}
+	public void setMovimientos(Set<Movimiento> movimientos) {
+		this.movimientos = movimientos;
+	}
+	public Set<PagoServicio> getPagoServicios() {
+		return pagoServicios;
+	}
+	public void setPagoServicios(Set<PagoServicio> pagoServicios) {
+		this.pagoServicios = pagoServicios;
+	}
+	public Set<Prestamo> getPrestamos() {
+		return prestamos;
+	}
+	public void setPrestamos(Set<Prestamo> prestamos) {
+		this.prestamos = prestamos;
+	}
+	public boolean isActivo() {
+		return activo;
+	}
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 	
 	
