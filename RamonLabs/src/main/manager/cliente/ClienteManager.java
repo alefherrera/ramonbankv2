@@ -69,4 +69,20 @@ public class ClienteManager {
 
 		cliente.update();
 	}
+	
+	//Devuelve true si el cliente existe
+	public static boolean ExisteCliente(int idCliente)
+	{
+		Cliente clienteDNI = (Cliente) Contexto.getBean("clienteBean");
+        Parametro param = new Parametro("dni", idCliente);
+        
+        if (clienteDNI.select(param).size()>0)
+        {
+        	return true;
+        }
+        else
+        {
+        	return false;
+        }
+	}
 }
