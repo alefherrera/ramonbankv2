@@ -7,67 +7,95 @@
 
 	<constant name="struts.devMode" value="false" />
 
-	<!-- <global-exception-mappings>
-		<exception-mapping exception="org.apache.struts.register.exceptions.SecurityBreachException" result="securityerror" />
-		<exception-mapping exception="java.lang.Exception" result="error" />
-    </global-exception-mappings>
- 
-    <global-results>
-  	 	<result name="securityerror">/securityerror.jsp</result>
-  		<result name="error">/error.jsp</result>
-    </global-results> -->
+	<!-- <global-exception-mappings> <exception-mapping exception="org.apache.struts.register.exceptions.SecurityBreachException" 
+		result="securityerror" /> <exception-mapping exception="java.lang.Exception" 
+		result="error" /> </global-exception-mappings> <global-results> <result name="securityerror">/securityerror.jsp</result> 
+		<result name="error">/error.jsp</result> </global-results> -->
 
-	<package name="EjemploHibernate" extends="struts-default" namespace="/">
+	<!--CON ESTA ACCION VOY A PROBAR LO DE CLIENTE <action name="crearcliente" 
+		class="<nombredeclase>" > <result name="SUCCESS">/index.jsp</result> <result 
+		name="ERROR">/error.jsp</result> </action> -->
 
-        <action name="">
-			<result>/index.jsp</result>			
+	<package name="clientes" extends="struts-default" namespace="/">
+
+		<action name="">
+			<result>/index.jsp</result>
 		</action>
-		
+
 		<action name="altacliente">
-			<result>/altacliente.jsp</result>			
+			<result>/clientes/altacliente.jsp</result>
 		</action>
-		
+
 		<action name="bajacliente">
-			<result>/bajacliente.jsp</result>			
+			<result>/clientes/bajacliente.jsp</result>
 		</action>
-		
+
 		<action name="modificarcliente">
-			<result>/modificarcliente.jsp</result>			
+			<result>/clientes/modificarcliente.jsp</result>
 		</action>
-		
+
 		<action name="showclientes">
-			<result>/showclientes.jsp</result>			
+			<result>/clientes/showclientes.jsp</result>
 		</action>
-		
+
 		<action name="clienteAction">
-			<result>/clientes.jsp</result>			
+			<result>/clientes/clientes.jsp</result>
 		</action>
-		
+
 		<action name="strutsAction">
-			<result>/struts_view.jsp</result>			
+			<result>/struts_view.jsp</result>
 		</action>
-	
+
 		<action name="crearCliente" class="com.ramonlabs.ramonbank.action.AltaClienteAction">
-			<result name="success">/index.jsp</result>			
-			<result name="error">/error.jsp</result>			
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
 		</action>
-		
+
 		<action name="borrarCliente" class="com.ramonlabs.ramonbank.action.BajaClienteAction">
-			<result name="success">/index.jsp</result>			
-			<result name="error">/error.jsp</result>			
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
 		</action>
-		
+
 		<action name="ModificarCliente" class="com.ramonlabs.ramonbank.action.BajaClienteAction">
-			<result name="success">/index.jsp</result>			
-			<result name="error">/error.jsp</result>			
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
 		</action>
+
+	</package>
+
+	<package name="cuentas" extends="struts-default" namespace="/">
+
+		<action name="altacuenta">
+			<result>/cuentas/altacuenta.jsp</result>
+		</action>
+
+		<action name="bajacuenta">
+			<result>/cuentas/bajacuenta.jsp</result>
+		</action>
+
+		<action name="cuentas">
+			<result>/cuentas/cuentas.jsp</result>
+		</action>
+
+		<action name="modificarcuenta">
+			<result>/cuentas/modificarcuenta.jsp</result>
+		</action>
+
+		<action name="showcuentas">
+			<result>/cuentas/showcuentas.jsp</result>
+		</action>
+
+	</package>
+
+	<package name="prestamo" extends="struts-default" namespace="/">
 	
 	
-		<!--CON ESTA ACCION VOY A PROBAR LO DE CLIENTE
-		<action name="crearcliente" class="<nombredeclase>" >
-	<result name="SUCCESS">/index.jsp</result>
-	<result name="ERROR">/error.jsp</result>
-</action> -->
+	
+	</package>
+	
+	<package name="servicio" extends="struts-default" namespace="/">
+	
+	
 	
 	</package>
 
