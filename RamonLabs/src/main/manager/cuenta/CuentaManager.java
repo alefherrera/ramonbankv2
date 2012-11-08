@@ -52,11 +52,11 @@ public class CuentaManager {
 	public static void Baja(int id) throws OperationException
 	{
 		if(id <= 0)
-			throw new OperationException("Id del cuenta incorrecto");
+			throw new OperationException("Seleccione una cuenta correcta");
 		
 		Cuenta cuenta = (Cuenta) Contexto.getBean("cuentaBean");
 		Parametro param = new Parametro("id", id);
-		cuenta = cuenta.load(param);
+		cuenta = cuenta.Load(param);
 		if(cuenta == null)
 			throw new OperationException("La Id no concuerda con ningun cuenta");
 		cuenta.setActivo(false);
@@ -69,9 +69,77 @@ public class CuentaManager {
 		if(cuenta == null)
 			throw new OperationException("El objeto cuenta es null");
 		if(cuenta.getId() <= 0)
-			throw new OperationException("Id de la cuenta incorrecto");
+			throw new OperationException("Seleccione una cuenta");
 
 		cuenta.update();
 	}
+	
+	public static void Depositar(Cuenta cuenta, int monto) throws OperationException
+	{
+		if(cuenta == null)
+			throw new OperationException("El objeto cuenta es null");
+		if(cuenta.getId() <= 0)
+			throw new OperationException("Seleccione una cuenta");
+		if(monto <= 0)
+			throw new OperationException("Monto incorrecto");
+		
+        Parametro P_Id = new Parametro("id", cuenta.getId());
+        cuenta = cuenta.Load(P_Id);
+    
+
+        double _costoMovimiento = Enums.TIPO_CUENTA.get_enum(cuenta.getTipo())
+                        .costoMovimiento();
+
+        cuenta.setSaldo(cuenta.getSaldo() + monto
+                        - (monto * _costoMovimiento));
+        cuenta.update();
+
+//        double montoTotal = _monto - (_monto * _costoMovimiento);
+//        Movimientos _movimiento = new Movimientos();
+//        _movimiento.set_idcuenta(_cuenta.get_id());
+//        _movimiento.set_monto(montoTotal);
+//        _movimiento.set_origen(MOVIMIENTO.ORIGEN.CAJA.id());
+//        _movimiento.set_tipo(MOVIMIENTO.TIPO.DEPOSITO.id());
+//        _movimiento.set_saldo(_cuenta.get_saldo());
+//        _movimiento.Insert();
+
+        return;
+	}
+	
+	public static void Extraer(Cuenta cuenta, int monto) throws OperationException
+	{
+		if(cuenta == null)
+			throw new OperationException("El objeto cuenta es null");
+		if(cuenta.getId() <= 0)
+			throw new OperationException("Seleccione una cuenta");
+		if(monto <= 0)
+			throw new OperationException("Monto incorrecto");
+		
+		Parametro P_Id = new Parametro("id", cuenta.getId());
+        cuenta = cuenta.Load(P_Id);
+	    
+
+        double _costoMovimiento = Enums.TIPO_CUENTA.get_enum(cuenta.getTipo())
+                        .costoMovimiento();
+
+        if (cuenta.getSaldo() < monto + monto * _costoMovimiento) {
+                throw new OperationException(
+                                "No hay suficiente saldo para realizar la transferencia");
+        }
+
+        cuenta.setSaldo(cuenta.getSaldo() - monto - monto
+                        * _costoMovimiento);
+        cuenta.update();
+
+//        double montoTotal = _monto + (_monto * _costoMovimiento);
+//        Movimientos _movimiento = new Movimientos();
+//        _movimiento.set_idcuenta(_cuenta.get_id());
+//        _movimiento.set_monto(montoTotal);
+//        _movimiento.set_origen(MOVIMIENTO.ORIGEN.CAJA.id());
+//        _movimiento.set_tipo(MOVIMIENTO.TIPO.EXTRACCION.id());
+//        _movimiento.set_saldo(_cuenta.get_saldo());
+//        _movimiento.Insert();
+	}
+	
 
 }
