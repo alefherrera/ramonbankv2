@@ -31,7 +31,7 @@ public class BajaClienteAction extends ActionSupport implements SessionAware {
     	
 		cliente.setDni(dni);
 		
-		ClienteManager.Registro(cliente);
+		ClienteManager.Baja(cliente.getId());
 		
 		if (dni == null || dni.isEmpty())
 			return ERROR;
