@@ -8,10 +8,10 @@
 </head>
 <body>
 	<ul>
-		<li><a href="altacliente">Alta</a></li>
-		<li><a href="bajacliente">Baja</a></li>
-		<li><a href="modificarcliente">Modificar</a></li>
-		<li><a href="showclientes">Mostrar todos</a></li>
+		<li><a href="altacuenta">Alta</a></li>
+		<li><a href="bajacuenta">Baja</a></li>
+		<li><a href="modificarcuenta">Modificar</a></li>
+		<li><a href="showcuenta">Mostrar todos</a></li>
 	</ul>
 </body>
 </html>
