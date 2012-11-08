@@ -94,8 +94,8 @@ public class TableBase<T> {
 		 
 	}*/
 
-	@SuppressWarnings("unchecked")
-	public List<T> select(Parametro[] parametros) {
+	@SuppressWarnings("unchecked")	
+	public List<T> select(Parametro... parametros) {
 
 		DetachedCriteria criteria = DetachedCriteria.forClass(this.getClass());
 
