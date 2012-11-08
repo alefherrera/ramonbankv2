@@ -8,6 +8,7 @@
 <title>Crear Cliente</title>
 </head>
 <body>
+<s:include value="/estructura/header.jsp"></s:include>
 <h1>Alta Cliente</h1>
 <s:form action="crearCliente">
 
@@ -57,3 +58,4 @@
 </s:form>
 </body>
 </html>
+<s:include value="/estructura/footer.jsp"></s:include>
