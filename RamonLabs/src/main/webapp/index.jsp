@@ -12,7 +12,7 @@
 	<ul>
 	<li><a href=clienteAction>Clientes</a></li>
 	
-	<li>Cuentas</li>
+	<li><a href=cuentaAction>Cuentas</a></li>
 	</ul>
 	
 	<s:a action="strutsAction">Struts</s:a>

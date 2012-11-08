@@ -73,7 +73,7 @@
 			<result>/cuentas/bajacuenta.jsp</result>
 		</action>
 
-		<action name="cuentas">
+		<action name="cuentaAction">
 			<result>/cuentas/cuentas.jsp</result>
 		</action>
 
@@ -83,6 +83,11 @@
 
 		<action name="showcuentas">
 			<result>/cuentas/showcuentas.jsp</result>
+		</action>
+		
+		<action name="crearCuenta" class="com.ramonlabs.ramonbank.action.AltaCuentaAction">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
 		</action>
 
 	</package>
