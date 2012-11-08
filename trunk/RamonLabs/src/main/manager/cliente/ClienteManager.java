@@ -52,7 +52,7 @@ public class ClienteManager {
 		
 		Cliente cliente = (Cliente) Contexto.getBean("clienteBean");
 		Parametro param = new Parametro("id", id);
-		cliente = cliente.load(param);
+		cliente = cliente.Load(param);
 		if(cliente == null)
 			throw new OperationException("La Id no concuerda con ningun cliente");
 		cliente.setActivo(false);
