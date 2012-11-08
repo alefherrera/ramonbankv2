@@ -96,4 +96,6 @@
 		class="com.ramonlabs.ramonbank.dbaccess.Prestamo"></bean>
 	<bean id="transferenciaBean" parent="abstractDao"
 		class="com.ramonlabs.ramonbank.dbaccess.Transferencia"></bean>
+	<bean id="serviciosBean" parent="abstractDao"
+		class="com.ramonlabs.ramonbank.dbaccess.Servicios"></bean>
 </beans>

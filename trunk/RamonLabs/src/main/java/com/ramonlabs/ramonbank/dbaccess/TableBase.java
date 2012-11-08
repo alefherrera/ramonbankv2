@@ -1,9 +1,6 @@
 package com.ramonlabs.ramonbank.dbaccess;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -118,7 +115,33 @@ public class TableBase<T> {
 		criteria.add(Restrictions.eq(parametro.getName(), parametro.getValue()));
 
 		return hibernateTemplate.findByCriteria(criteria);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public T load(Parametro parametro)
+	{
+		DetachedCriteria criteria = DetachedCriteria.forClass(this.getClass());
+
+		criteria.add(Restrictions.eq(parametro.getName(), parametro.getValue()));
+		List<T> lista = hibernateTemplate.findByCriteria(criteria);
+		if(lista.size() > 0)
+			return lista.get(0);
+		return null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public T Load(Parametro[] parametros) {
+
+		DetachedCriteria criteria = DetachedCriteria.forClass(this.getClass());
+
+		for (Parametro t : parametros) {
+			criteria.add(Restrictions.eq(t.getName(), t.getValue()));
+		}
+		List<T> lista = hibernateTemplate.findByCriteria(criteria);
+
+		if(lista.size() > 0)
+			return lista.get(0);
+		return null;
 
 	}
-
 }

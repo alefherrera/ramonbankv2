@@ -35,6 +35,8 @@ public class Cliente extends TableBase<Cliente> implements Serializable {
 	private Set<Cuenta> cuentas = new HashSet<Cuenta>(0);
 	@OneToMany(targetEntity=Prestamo.class,fetch=FetchType.EAGER,mappedBy="idCuenta")
 	private Set<Cuenta> Prestamo = new HashSet<Cuenta>(0);
+	@Column(name ="activo")
+	private boolean activo; 
 
 	public int getId() {
 		return id;
@@ -95,4 +97,11 @@ public class Cliente extends TableBase<Cliente> implements Serializable {
 		this.cuentas = cuentas;
 	}
 
+	public boolean isActivo() {
+		return activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
 }

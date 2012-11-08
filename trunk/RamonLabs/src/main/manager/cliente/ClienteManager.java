@@ -1,8 +1,5 @@
 package cliente;
-import java.util.List;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.ramonlabs.ramonbank.dbaccess.Cliente;
 import com.ramonlabs.ramonbank.dbaccess.Parametro;
@@ -11,6 +8,7 @@ import utils.Contexto;
 import utils.Enums;
 import utils.OperationException;
 import utils.Validator;
+
 
 public class ClienteManager {
 	public static void Registro(Cliente cliente) throws OperationException
@@ -36,17 +34,39 @@ public class ClienteManager {
         }
         
         
-        
-        //TODO: VER QUE VERGA HACER CON ESTO ALE MEDIA PILA        
-    	
-    	Cliente cliente2 = (Cliente) Contexto.getBean("clienteBean");
-    	
+             
+    	Cliente clienteDNI = (Cliente) Contexto.getBean("clienteBean");
         Parametro param = new Parametro("dni", cliente.getDni());
         
-        if (cliente2.select(param).size()>0)
+        if (clienteDNI.select(param).size()>0)
         	throw new OperationException("El DNI ya existe en la base!");
         
         cliente.save();
+	}
+	
+	
+	public static void Baja(int id) throws OperationException
+	{
+		if(id <= 0)
+			throw new OperationException("Id del cliente incorrecto");
 		
+		Cliente cliente = (Cliente) Contexto.getBean("clienteBean");
+		Parametro param = new Parametro("id", id);
+		cliente = cliente.load(param);
+		if(cliente == null)
+			throw new OperationException("La Id no concuerda con ningun cliente");
+		cliente.setActivo(false);
+		
+		cliente.update();
+	}
+	
+	public static void Modificar(Cliente cliente) throws OperationException
+	{
+		if(cliente == null)
+			throw new OperationException("El objeto cliente es null");
+		if(cliente.getId() <= 0)
+			throw new OperationException("Id del cliente incorrecto");
+
+		cliente.update();
 	}
 }
