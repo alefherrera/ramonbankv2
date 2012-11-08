@@ -34,7 +34,7 @@
 			<result>/clientes/modificarcliente.jsp</result>
 		</action>
 
-		<action name="showclientes" class="com.ramonlabs.action.ShowClientesAction">
+		<action name="showclientes" class="com.ramonlabs.ramonbank.action.ShowClientesAction">
 			<result name="success">/clientes/showclientes.jsp</result>
 		</action>
 
