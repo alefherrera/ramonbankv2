@@ -31,8 +31,7 @@ public class ShowClientesAction extends ActionSupport implements SessionAware {
 	@Override
 	public String execute() throws Exception, OperationException {
 		
-		Cliente cliente = (Cliente) Contexto.getBean("clienteBean");
-		setClientes(cliente.loadAll());
+		setClientes(ClienteManager.ListarClientes());
 		return SUCCESS;
 	}
 
