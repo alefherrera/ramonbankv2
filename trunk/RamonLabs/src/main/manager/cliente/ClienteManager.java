@@ -1,6 +1,8 @@
 package cliente;
 
 
+import java.util.List;
+
 import com.ramonlabs.ramonbank.dbaccess.Cliente;
 import com.ramonlabs.ramonbank.dbaccess.Parametro;
 
@@ -85,4 +87,11 @@ public class ClienteManager {
         	return false;
         }
 	}
+	
+	public static List<Cliente>ListarClientes(){
+		Cliente cliente =  (Cliente) Contexto.getBean("clienteBean");
+		return cliente.loadAll();
+	}
+	
+
 }
