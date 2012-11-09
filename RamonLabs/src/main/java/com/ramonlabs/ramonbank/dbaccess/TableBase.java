@@ -118,7 +118,7 @@ public class TableBase<T> {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public T load(Parametro parametro)
+	public T Load(Parametro parametro)
 	{
 		DetachedCriteria criteria = DetachedCriteria.forClass(this.getClass());
 
