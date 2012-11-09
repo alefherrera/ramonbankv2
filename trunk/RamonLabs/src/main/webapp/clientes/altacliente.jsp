@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="s" uri="/struts-tags" %>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,46 +8,34 @@
 <title>Crear Cliente</title>
 </head>
 <body>
-<s:include value="/estructura/header.jsp"></s:include>
-<h1>Alta Cliente</h1>
-<s:form action="crearCliente">
+	<s:include value="/estructura/header.jsp"></s:include>
+	<h1>Alta Cliente</h1>
+	
+	<s:text name="error"></s:text>
+	
+	<s:form action="crearCliente">
 
 		<table>
 			<tbody>
 				<tr>
 					<td>DNI:</td>
-					<td>
-					<s:textfield name="dni"></s:textfield>
-					<!--<input type="text" name="dni" class="required number minlength" minlength="8" maxlength="8" />-->
-					</td>
+					<td><s:textfield name="dni"></s:textfield></td>
 				</tr>
-				<tr> 
+				<tr>
 					<td>Nombre:</td>
-					<td>
-					<s:textfield name="nombre"></s:textfield>
-					<!--<input type="text" name="nombre" class="required" />-->
-					</td>
+					<td><s:textfield name="nombre"></s:textfield></td>
 				</tr>
 				<tr>
 					<td>Apellido:</td>
-					<td>
-					<s:textfield	name="apellido"></s:textfield>
-					<!--<input type="text" name="apellido" class="required" />-->
-					</td>
+					<td><s:textfield name="apellido"></s:textfield></td>
 				</tr>
 				<tr>
 					<td>Direccion:</td>
-					<td>
-					<s:textfield	name="direccion"></s:textfield>
-					<!--<input type="text" name="apellido" class="required" />-->
-					</td>
+					<td><s:textfield name="direccion"></s:textfield></td>
 				</tr>
 				<tr>
 					<td>E-mail:</td>
-					<td>
-					<s:textfield	name="email"></s:textfield>
-					<!--<input type="text" name="apellido" class="required" />-->
-					</td>
+					<td><s:textfield name="email"></s:textfield></td>
 				</tr>
 				<tr>
 					<td><input type="submit" value="Entrar"></input></td>
@@ -55,7 +43,7 @@
 			</tbody>
 		</table>
 
-</s:form>
+	</s:form>
 </body>
 </html>
 <s:include value="/estructura/footer.jsp"></s:include>

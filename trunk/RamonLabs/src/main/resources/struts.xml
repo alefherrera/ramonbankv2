@@ -48,7 +48,7 @@
 
 		<action name="crearCliente" class="com.ramonlabs.ramonbank.action.AltaClienteAction">
 			<result name="success">/index.jsp</result>
-			<result name="error">/error.jsp</result>
+			<result name="error">/clientes/altacliente.jsp</result>
 		</action>
 
 		<action name="borrarCliente" class="com.ramonlabs.ramonbank.action.BajaClienteAction">
