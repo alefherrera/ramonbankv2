@@ -41,8 +41,6 @@ public class AltaCuentaAction extends ActionSupport implements SessionAware{
 			return ERROR;
 		return SUCCESS;
 	}
-	
-	
 
 	public Integer getCliente_id() {
 		return cliente_id;
