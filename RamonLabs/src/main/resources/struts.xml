@@ -65,8 +65,12 @@
 
 	<package name="cuentas" extends="struts-default" namespace="/">
 
-		<action name="altacuenta">
-			<result>/cuentas/altacuenta.jsp</result>
+<!-- 		<action name="altacuenta"> -->
+<!-- 			<result>/cuentas/altacuenta.jsp</result> -->
+<!-- 		</action> -->
+
+		<action name="altacuenta" class="com.ramonlabs.ramonbank.action.CargaComboAltaCuentaAction">
+			<result name="success">/cuentas/altacuenta.jsp</result>
 		</action>
 
 		<action name="bajacuenta">

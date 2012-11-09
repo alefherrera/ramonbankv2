@@ -15,10 +15,7 @@
 				<tr>
 					<td>Cliente:</td>
 					<td>
-					<s:combobox label="Selecion cliente" 
-						headerKey="-1" headerValue="--- Seleccione ---"
-						list="clientes" 
-						name="comboclientes" />
+					<s:combobox label="Selecion cliente" headerKey="-1" headerValue="--- Seleccione ---" list="clientes" name="comboclientes" listKey="id" listValue="dni" />
 					<s:textfield name="dni"></s:textfield>
 					<!--<input type="text" name="dni" class="required number minlength" minlength="8" maxlength="8" />-->
 					</td>
@@ -26,10 +23,10 @@
 				<tr> 
 					<td>Tipo:</td>
 					<td>
-					<s:combobox label="Selecion tipo" 
-						headerKey="-1" headerValue="--- Seleccione ---"
-						list="clientes" 
-						name="comboclientes" />
+<%-- 					<s:combobox label="Selecion tipo"  --%>
+<%-- 						headerKey="-1" headerValue="--- Seleccione ---" --%>
+<%-- 						list="clientes"  --%>
+<%-- 						name="cliente" /> --%>
 					<s:textfield name="dni"></s:textfield>
 					</td>
 				</tr>
