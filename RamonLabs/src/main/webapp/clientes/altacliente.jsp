@@ -11,7 +11,10 @@
 	<s:include value="/estructura/header.jsp"></s:include>
 	<h1>Alta Cliente</h1>
 	
-	<s:text name="error"></s:text>
+	<s:if test="error != null">
+		<s:text name="error"></s:text>
+	</s:if>
+	
 	
 	<s:form action="crearCliente">
 
