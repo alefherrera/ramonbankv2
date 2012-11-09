@@ -18,24 +18,40 @@ public class AltaClienteAction extends ActionSupport implements SessionAware {
 	private String apellido;
 	private String direccion;
 	private String email;
+	private String error;
+
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
+	}
 
 	@Override
-	public String execute() throws Exception, OperationException{
-		
-		//Cargo todo el cliente y lo mando a ClienteManager.Registro, esta clase valida cliente y devuelve una excepcion (OperationException) o grava en la db.
-    	
-    	Cliente cliente = (Cliente) Contexto.getBean("clienteBean");
-    	
+	public String execute() throws Exception, OperationException {
+
+		// Cargo todo el cliente y lo mando a ClienteManager.Registro, esta
+		// clase valida cliente y devuelve una excepcion (OperationException) o
+		// grava en la db.
+
+		Cliente cliente = (Cliente) Contexto.getBean("clienteBean");
+
 		cliente.setDni(dni);
 		cliente.setNombre(nombre);
 		cliente.setApellido(apellido);
 		cliente.setDireccion(direccion);
 		cliente.setEmail(email);
-		
+		try
+		{
 		ClienteManager.Registro(cliente);
-		
-		if (dni == null || dni.isEmpty())
+		}
+		catch (OperationException ex)
+		{
+			setError(ex.getMessage());
 			return ERROR;
+		}
+
 		return SUCCESS;
 	}
 

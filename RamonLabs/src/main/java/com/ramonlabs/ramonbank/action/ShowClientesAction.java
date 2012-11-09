@@ -10,6 +10,8 @@ import utils.OperationException;
 
 import java.util.List;
 
+import cliente.ClienteManager;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.ramonlabs.ramonbank.dbaccess.Cliente;
 
@@ -28,7 +30,7 @@ public class ShowClientesAction extends ActionSupport implements SessionAware {
 
 	@Override
 	public String execute() throws Exception, OperationException {
-
+		
 		Cliente cliente = (Cliente) Contexto.getBean("clienteBean");
 		setClientes(cliente.loadAll());
 		return SUCCESS;
