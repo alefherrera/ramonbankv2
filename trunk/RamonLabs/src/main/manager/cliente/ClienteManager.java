@@ -25,13 +25,13 @@ public class ClienteManager {
         if(!Validator.validMail(cliente.getEmail())){
                 throw new OperationException("Mail incorrecto");
         }
-        if(cliente.getApellido() == ""){
+        if(cliente.getApellido() == "" || cliente.getApellido() == null){
                 throw new OperationException("Apellido incorrecto");
         }
-        if(cliente.getNombre() == ""){
+        if(cliente.getNombre() == "" || cliente.getNombre() == null){
                 throw new OperationException("Nombre incorrecto");
         }
-        if(cliente.getDireccion() == ""){
+        if(cliente.getDireccion() == "" || cliente.getDireccion() == null){
                 throw new OperationException("Direccion incorrecta");
         }
         
