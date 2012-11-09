@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import utils.Contexto;
 import utils.OperationException;
 
 import java.util.List;
