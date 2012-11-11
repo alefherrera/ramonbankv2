@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Baja Cuenta</title>
+<title>Modificar Cliente</title>
 </head>
 <body>
-<h1>Baja Cuenta</h1>
-<s:form action="borrarCuenta">
+<h1>Modificar Cliente</h1>
+<s:form action="modificarCuenta">
 		<table>
 			<tbody>
 				<tr>
@@ -27,30 +27,33 @@
 				<tr> 
 					<td>Tipo:</td>
 					<td>
-					<s:label name="tipo"/>
+					<s:textfield name="tipo"></s:textfield>
+<%-- 					<s:label name="tipo"/> --%>
 					</td>
 				</tr>
 				<tr>
 					<td>Descubierto:</td>
 					<td>
-					<s:label name="descubierto"/>
+					<s:textfield name="descubierto"></s:textfield>
+<%-- 					<s:label name="descubierto"/> --%>
 					</td>
 				</tr>
 				<tr>
 					<td>Saldo:</td>
 					<td>
-					<s:label name="saldo"/>
+					<s:textfield name="saldo"></s:textfield>
+<%-- 					<s:label name="saldo"/> --%>
 					</td>
 				</tr>
 				<tr>
 					<td>Estado:</td>
 					<td>
-					<s:if test="estado==1">
-						<s:label value="Activo"/>
-					</s:if>
-					<s:elseif test="estado==0">
-						<s:label value="Desactivo"/>
-					</s:elseif>
+<%-- 					<s:if test="estado==1"> --%>
+<%-- 						<s:label value="Activo"/> --%>
+<%-- 					</s:if> --%>
+<%-- 					<s:elseif test="estado==0"> --%>
+<%-- 						<s:label value="Desactivo"/> --%>
+<%-- 					</s:elseif> --%>
 					</td>
 				</tr>
 				<tr>
