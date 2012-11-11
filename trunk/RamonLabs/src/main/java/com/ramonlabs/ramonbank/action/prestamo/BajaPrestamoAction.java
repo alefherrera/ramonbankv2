@@ -8,7 +8,7 @@ import utils.OperationException;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class BajaPrestamosAction extends ActionSupport implements SessionAware{
+public class BajaPrestamoAction extends ActionSupport implements SessionAware{
 
 	private static final long serialVersionUID = 1L;
 	
