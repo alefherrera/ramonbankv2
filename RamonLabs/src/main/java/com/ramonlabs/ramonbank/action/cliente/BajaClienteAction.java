@@ -1,6 +1,10 @@
 package com.ramonlabs.ramonbank.action.cliente;
 
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
 import utils.Contexto;
@@ -21,23 +25,47 @@ public class BajaClienteAction extends ActionSupport implements SessionAware {
 	private String apellido;
 	private String direccion;
 	private String email;
+	private String id;
+	private String error;
 
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
+	}
 	@Override
-	public String execute() throws Exception, OperationException{
-		
-		//Cargo todo el cliente y lo mando a ClienteManager.Registro, esta clase valida cliente y devuelve una excepcion (OperationException) o grava en la db.
-    	
-    	Cliente cliente = (Cliente) Contexto.getBean("clienteBean");
-    	
-		cliente.setDni(dni);
-		
-		ClienteManager.Baja(cliente.getId());
-		
-		if (dni == null || dni.isEmpty())
+	public String execute() throws Exception{
+		try
+		{
+			ClienteManager.Baja(id);
+		}
+		catch(OperationException ex)
+		{
+			error = ex.getMessage();
 			return ERROR;
+		}
 		return SUCCESS;
 	}
 
+	public String display(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		setId((request.getParameter("idCliente")));
+		try {
+			Cliente cliente = ClienteManager.CargarClienteID(getId());
+			setDni(cliente.getDni());
+			setApellido(cliente.getApellido());
+			setDireccion(cliente.getDireccion());
+			setEmail(cliente.getEmail());
+			setNombre(cliente.getNombre());
+			
+		} catch (OperationException e) {
+			return ERROR;
+		}
+		
+		return NONE;
+	}
 	public void setSession(Map<String, Object> arg0) {
 		// TODO Auto-generated method stub
 
@@ -81,6 +109,14 @@ public class BajaClienteAction extends ActionSupport implements SessionAware {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }
