@@ -1,4 +1,4 @@
-package com.ramonlabs.ramonbank.action;
+package com.ramonlabs.ramonbank.action.cliente;
 
 import java.util.Map;
 import cliente.ClienteManager;
