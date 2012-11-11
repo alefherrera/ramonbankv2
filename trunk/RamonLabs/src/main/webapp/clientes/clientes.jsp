@@ -15,11 +15,7 @@
 	<ul>
 		<li><a href="altacliente">Alta</a></li>
 		<li><a href="bajacliente">Baja</a></li>
-		
-		<s:url action="modificarCliente" var="modificarLink">
-  			<s:param name="idCliente">2</s:param>
-		</s:url>
-		<li><a href="${modificarLink}">Modificar</a></li>
+		<li><a href="modificarCliente">Modificar</a></li>
 		<li><a href="showClientes">Mostrar todos</a></li>
 	</ul>
 </body>
