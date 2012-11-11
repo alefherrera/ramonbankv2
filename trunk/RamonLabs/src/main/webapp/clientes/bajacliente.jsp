@@ -8,44 +8,45 @@
 <title>Baja Cliente</title>
 </head>
 <body>
-<h1>Alta Cliente</h1>
-<s:form action="borrarCliente">
+<h1>Baja Cliente</h1>
 
+	<s:if test="error != null">
+		<s:text name="error"></s:text>
+	</s:if>	
+<s:form action="submitbajaCliente">
+		<s:hidden name="id"/>
 		<table>
 			<tbody>
 				<tr>
-<!-- 				la idea es mostrar los datos del cliente, y luengo eliminarlo, le pregunta ¿es hay que agregar otra .jsp? lo mismo pasaria con cuentas y las otras cosas -->
-					<td>DNI:</td>
 					<td>
-					<s:textfield name="dni"></s:textfield>
+					<s:label label="DNI" name="dni"></s:label>
+					<!--<input type="text" name="dni" class="required number minlength" minlength="8" maxlength="8" />-->
 					</td>
 				</tr>
 				<tr> 
-					<td>Nombre:</td>
 					<td>
-					<s:label name="nombre"/>
+					<s:label label="Nombre" name="nombre"></s:label>
+					<!--<input type="text" name="nombre" class="required" />-->
 					</td>
 				</tr>
 				<tr>
-					<td>Apellido:</td>
 					<td>
-					<s:label name="apellido"/>
+ 					<s:label label="Apellido" name="apellido"></s:label>
 					</td>
 				</tr>
 				<tr>
-					<td>Direccion:</td>
 					<td>
-					<s:label name="direccion"/>
+ 					<s:label label="Direccion" name="direccion"></s:label>
 					</td>
 				</tr>
 				<tr>
-					<td>E-mail:</td>
 					<td>
-					<s:label name="email"/>
+ 					<s:label label="eMail" name="email"></s:label>
+					<!--<input type="text" name="apellido" class="required" />-->
 					</td>
 				</tr>
 				<tr>
-					<td><input type="submit" value="Entrar"></input></td>
+					<td><input type="submit" value="Dar de Baja"></input></td>
 				</tr>
 			</tbody>
 		</table>
