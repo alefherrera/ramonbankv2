@@ -1,4 +1,4 @@
-package com.ramonlabs.ramonbank.action;
+package com.ramonlabs.ramonbank.action.cliente;
 
 import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
@@ -11,12 +11,12 @@ import cliente.ClienteManager;
 import com.opensymphony.xwork2.ActionSupport;
 import com.ramonlabs.ramonbank.dbaccess.Cliente;
 
-public class ModificarClienteAction extends ActionSupport implements SessionAware {
+public class BajaClienteAction extends ActionSupport implements SessionAware {
 
 	private static final long serialVersionUID = 1L;
 
 	private String dni;
-	//Dejo los siguientes campos para mostrar los datos de la personal que se Modificara.
+	//Dejo los siguientes campos para mostrar los datos de la personal que se eliminara.
 	private String nombre;
 	private String apellido;
 	private String direccion;
@@ -31,7 +31,7 @@ public class ModificarClienteAction extends ActionSupport implements SessionAwar
     	
 		cliente.setDni(dni);
 		
-		ClienteManager.Registro(cliente);
+		ClienteManager.Baja(cliente.getId());
 		
 		if (dni == null || dni.isEmpty())
 			return ERROR;

@@ -1,4 +1,4 @@
-package com.ramonlabs.ramonbank.action;
+package com.ramonlabs.ramonbank.action.cuenta;
 
 import java.util.List;
 
