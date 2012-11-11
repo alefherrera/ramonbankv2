@@ -60,8 +60,7 @@
 	</package>
 
 	<package name="cuentas" extends="struts-default" namespace="/">
-
-
+	
 		<action name="altacuenta" class="com.ramonlabs.ramonbank.action.cuenta.CargaComboAltaCuentaAction">
 			<result name="success">/cuentas/altacuenta.jsp</result>
 		</action>
@@ -86,6 +85,20 @@
 			<result name="success">/index.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
+		
+		<action name="borrarCuenta" class="com.ramonlabs.ramonbank.action.BajaCuentaAction">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="modificarCuenta" class="com.ramonlabs.ramonbank.action.ModificarCuentaAction">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<action name="showcuentas" class="com.ramonlabs.ramonbank.action.ShowCuentasAction">
+			<result name="success">/cuentas/showcuentas.jsp</result>
+		</action>
 
 	</package>
 
@@ -97,7 +110,44 @@
 	
 	<package name="servicio" extends="struts-default" namespace="/">
 	
-	
+		<action name="altaservicio" >
+			<result name="success">/servicios/altaservicio.jsp</result>
+		</action>
+
+		<action name="bajaservicio">
+			<result>/servicios/bajaservicio.jsp</result>
+		</action>
+
+		<action name="servicioAction">
+			<result>/servicios/servicios.jsp</result>
+		</action>
+
+		<action name="modificarservicio">
+			<result>/servicios/modificarservicio.jsp</result>
+		</action>
+
+		<action name="showservicios">
+			<result>/servicios/showservicios.jsp</result>
+		</action>
+		
+		<action name="crearServicio" class="com.ramonlabs.ramonbank.action.AltaServicioAction">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="borrarServicio" class="com.ramonlabs.ramonbank.action.BajaServicioAction">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="modificarServicio" class="com.ramonlabs.ramonbank.action.ModificarServicioAction">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<action name="showServicio" class="com.ramonlabs.ramonbank.action.ShowServiciosAction">
+			<result name="success">/servicios/showservicios.jsp</result>
+		</action>
 	
 	</package>
 

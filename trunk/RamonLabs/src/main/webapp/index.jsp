@@ -13,6 +13,8 @@
 	<li><a href=clienteAction>Clientes</a></li>
 	
 	<li><a href=cuentaAction>Cuentas</a></li>
+	
+	<li><a href=servicioAction>Servicio</a></li>
 	</ul>
 	
 	<s:a action="strutsAction">Struts</s:a>
