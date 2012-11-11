@@ -54,6 +54,7 @@
   		 </action>
 		<action name="submitmodificarCliente" class="com.ramonlabs.ramonbank.action.cliente.ModificarClienteAction">
 			<result name="success">/index.jsp</result>
+			<result name="error">/clientes/modificarcliente.jsp</result>
 		</action>
 
 	</package>

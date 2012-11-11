@@ -25,20 +25,35 @@ public class ModificarClienteAction extends ActionSupport implements SessionAwar
 	private String direccion;
 	private String email;
 	private String idCliente;
+	private String error;
 	
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
+	}
+
 	@Override
-	public String execute() throws Exception, OperationException{
+	public String execute() throws Exception{
 		
-		//Cargo todo el cliente y lo mando a ClienteManager.Registro, esta clase valida cliente y devuelve una excepcion (OperationException) o grava en la db.
-    	
     	Cliente cliente = (Cliente) Contexto.getBean("clienteBean");
-    	
 		cliente.setDni(dni);
-		
-		ClienteManager.Registro(cliente);
-		
-		if (dni == null || dni.isEmpty())
+		cliente.setNombre(nombre);
+		cliente.setApellido(apellido);
+		cliente.setDireccion(direccion);
+		cliente.setEmail(email);
+		try
+		{
+			ClienteManager.Modificar(cliente);
+		}
+		catch(OperationException ex)
+		{
+			error = ex.getMessage();
 			return ERROR;
+		}
+		
 		return SUCCESS;
 	}
 
@@ -97,7 +112,7 @@ public class ModificarClienteAction extends ActionSupport implements SessionAwar
 		HttpServletRequest request = ServletActionContext.getRequest();
 		setIdCliente(request.getParameter("idCliente"));
 		try {
-			Cliente cliente = ClienteManager.CargarCliente(getIdCliente());
+			Cliente cliente = ClienteManager.CargarClienteID(getIdCliente());
 			setDni(cliente.getDni());
 			setApellido(cliente.getApellido());
 			setDireccion(cliente.getDireccion());
