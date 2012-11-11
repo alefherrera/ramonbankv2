@@ -36,12 +36,9 @@ public class ClienteManager {
         }
         
         
-             
-    	Cliente clienteDNI = (Cliente) Contexto.getBean("clienteBean");
-        Parametro param = new Parametro("dni", cliente.getDni());
         
-        if (clienteDNI.select(param).size()>0)
-        	throw new OperationException("El DNI ya existe en la base!");
+        if (ExisteCliente(Integer.parseInt(cliente.getDni())))
+        	throw new OperationException("El DNI ya existe");
         
         cliente.save();
 	}
@@ -73,19 +70,33 @@ public class ClienteManager {
 	}
 	
 	//Devuelve true si el cliente existe
-	public static boolean ExisteCliente(int idCliente)
+	public static boolean ExisteCliente(int DNI)
 	{
 		Cliente clienteDNI = (Cliente) Contexto.getBean("clienteBean");
-        Parametro param = new Parametro("dni", idCliente);
+        Parametro param = new Parametro("dni", DNI);
+		Parametro param_activo = new Parametro("activo", true);
         
-        if (clienteDNI.select(param).size()>0)
-        {
+        if (clienteDNI.select(param, param_activo).size()>0)
         	return true;
-        }
         else
-        {
         	return false;
-        }
+	}
+	
+	public static Cliente CargarCliente(int idCliente)
+	{
+		Cliente cliente = (Cliente) Contexto.getBean("clienteBean");
+        Parametro parametro = new Parametro("id", idCliente);
+        return cliente.Load(parametro);
+	}
+	
+	public static Cliente CargarCliente(String idCliente) throws OperationException
+	{
+		Cliente cliente = (Cliente) Contexto.getBean("clienteBean");
+		if(!Validator.isNumeric(idCliente))
+			throw new OperationException("ID de cliente incorrecta");
+		
+        Parametro parametro = new Parametro("id", Integer.parseInt(idCliente));
+        return cliente.Load(parametro);
 	}
 	
 	public static List<Cliente>ListarClientes(){

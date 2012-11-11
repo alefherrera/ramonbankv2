@@ -17,7 +17,6 @@
 		name="ERROR">/error.jsp</result> </action> -->
 
 	<package name="clientes" extends="struts-default" namespace="/">
-
 		<action name="">
 			<result>/index.jsp</result>
 		</action>
@@ -30,46 +29,39 @@
 			<result>/clientes/bajacliente.jsp</result>
 		</action>
 
-		<action name="modificarcliente">
-			<result>/clientes/modificarcliente.jsp</result>
-		</action>
 
-		<action name="showclientes" class="com.ramonlabs.ramonbank.action.ShowClientesAction">
+		<action name="showClientes" class="com.ramonlabs.ramonbank.action.cliente.ShowClientesAction">
 			<result name="success">/clientes/showclientes.jsp</result>
 		</action>
-
-		<action name="clienteAction">
-			<result>/clientes/clientes.jsp</result>
+		<action name="clienteAction" class="com.ramonlabs.ramonbank.action.cliente.CargarClientesAction">
+			<result name="success">/clientes/clientes.jsp</result>
 		</action>
 
-		<action name="strutsAction">
-			<result>/struts_view.jsp</result>
-		</action>
-
-		<action name="crearCliente" class="com.ramonlabs.ramonbank.action.AltaClienteAction">
+		<action name="crearCliente" class="com.ramonlabs.ramonbank.action.cliente.AltaClienteAction">
 			<result name="success">/index.jsp</result>
 			<result name="error">/clientes/altacliente.jsp</result>
 		</action>
 
-		<action name="borrarCliente" class="com.ramonlabs.ramonbank.action.BajaClienteAction">
+		<action name="borrarCliente" class="com.ramonlabs.ramonbank.action.cliente.BajaClienteAction">
 			<result name="success">/index.jsp</result>
-			<result name="error">/error.jsp</result>
+			<result name="error">/clientes/bajacliente.jsp</result>
 		</action>
-
-		<action name="ModificarCliente" class="com.ramonlabs.ramonbank.action.BajaClienteAction">
+		
+		
+		<action name="modificarCliente" class="com.ramonlabs.ramonbank.action.cliente.ModificarClienteAction" method="display">
+			<result name="none">/clientes/modificarcliente.jsp</result>
+			<result name="error">/clientes/clientes.jsp</result>
+  		 </action>
+		<action name="submitmodificarCliente" class="com.ramonlabs.ramonbank.action.cliente.ModificarClienteAction">
 			<result name="success">/index.jsp</result>
-			<result name="error">/error.jsp</result>
 		</action>
 
 	</package>
 
 	<package name="cuentas" extends="struts-default" namespace="/">
 
-<!-- 		<action name="altacuenta"> -->
-<!-- 			<result>/cuentas/altacuenta.jsp</result> -->
-<!-- 		</action> -->
 
-		<action name="altacuenta" class="com.ramonlabs.ramonbank.action.CargaComboAltaCuentaAction">
+		<action name="altacuenta" class="com.ramonlabs.ramonbank.action.cuenta.CargaComboAltaCuentaAction">
 			<result name="success">/cuentas/altacuenta.jsp</result>
 		</action>
 
@@ -89,7 +81,7 @@
 			<result>/cuentas/showcuentas.jsp</result>
 		</action>
 		
-		<action name="crearCuenta" class="com.ramonlabs.ramonbank.action.AltaCuentaAction">
+		<action name="crearCuenta" class="com.ramonlabs.ramonbank.action.cuenta.AltaCuentaAction">
 			<result name="success">/index.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
