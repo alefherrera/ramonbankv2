@@ -104,7 +104,44 @@
 
 	<package name="prestamo" extends="struts-default" namespace="/">
 	
-	
+		<action name="altaprestamo" >
+			<result name="success">/prestamos/altaprestamo.jsp</result>
+		</action>
+
+		<action name="bajaprestamo">
+			<result>/prestamos/bajaprestamo.jsp</result>
+		</action>
+
+		<action name="prestamoAction">
+			<result>/prestamos/prestamos.jsp</result>
+		</action>
+
+		<action name="modificarprestamo">
+			<result>/prestamos/modificarprestamo.jsp</result>
+		</action>
+
+		<action name="showprestamos">
+			<result>/prestamos/showprestamos.jsp</result>
+		</action>
+		
+		<action name="crearPrestamo" class="com.ramonlabs.ramonbank.action.AltaPrestamoAction">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="borrarPrestamo" class="com.ramonlabs.ramonbank.action.BajaPrestamoAction">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="modificarPrestamo" class="com.ramonlabs.ramonbank.action.ModificarPrestamoAction">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<action name="showPrestamo" class="com.ramonlabs.ramonbank.action.ShowPrestamosAction">
+			<result name="success">/prestamos/showprestamos.jsp</result>
+		</action>
 	
 	</package>
 	

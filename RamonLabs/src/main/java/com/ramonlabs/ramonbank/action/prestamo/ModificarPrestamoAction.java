@@ -8,7 +8,7 @@ import utils.OperationException;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class AltaPrestamosAction extends ActionSupport implements SessionAware{
+public class ModificarPrestamoAction extends ActionSupport implements SessionAware{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -21,5 +21,4 @@ public class AltaPrestamosAction extends ActionSupport implements SessionAware{
 		// TODO Auto-generated method stub
 		
 	}
-	
 }
