@@ -12,15 +12,17 @@
 
 	<ul>
 		<li><a href="altacliente">Alta</a></li>
-		<li><a href="showClientes">Mostrar todos</a></li>
-	</ul>
-	<br/>
-		<s:select label="Selecion cliente" headerKey="-1" 
-	headerValue="--- Seleccione ---" list="clientes" 
-	name="idcliente" listKey="id" listValue="dni" />
-	<ul>
 		<li><a href="bajacliente">Baja</a></li>
 		<li><a href="modificarCliente">Modificar</a></li>
+		<li><a href="showClientes">Mostrar todos</a></li>
+	</ul>
+<!-- 	<br/> -->
+<%-- 		<s:select label="Selecion cliente" headerKey="-1"  --%>
+<%-- 	headerValue="--- Seleccione ---" list="clientes"  --%>
+<%-- 	name="idcliente" listKey="id" listValue="dni" /> --%>
+	<ul>
+		
+		
 	</ul>
 </body>
 </html>
