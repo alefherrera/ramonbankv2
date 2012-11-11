@@ -29,7 +29,7 @@ public class CargarClientesAction extends ActionSupport implements SessionAware 
 	@Override
 	public String execute() throws Exception, OperationException {
 		
-		setClientes(ClienteManager.ListarClientes());
+		setClientes(ClienteManager.ListarClientesActivos());
 
 		return SUCCESS;
 	}

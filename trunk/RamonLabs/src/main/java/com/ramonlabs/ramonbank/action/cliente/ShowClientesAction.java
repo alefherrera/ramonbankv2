@@ -30,13 +30,12 @@ public class ShowClientesAction extends ActionSupport implements SessionAware {
 	@Override
 	public String execute() throws Exception, OperationException {
 		
-		setClientes(ClienteManager.ListarClientes());
+		setClientes(ClienteManager.ListarClientesActivos());
 		return SUCCESS;
 	}
 
 	public void setSession(Map<String, Object> arg0) {
 		// TODO Auto-generated method stub
-
 	}
 
 }

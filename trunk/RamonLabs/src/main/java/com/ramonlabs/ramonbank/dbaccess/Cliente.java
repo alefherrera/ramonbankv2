@@ -104,4 +104,15 @@ public class Cliente extends TableBase<Cliente> implements Serializable {
 	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
+	
+	public void Copy(Cliente cliente)
+	{
+		this.setId(cliente.getId());
+		this.setNombre(cliente.getNombre());
+		this.setApellido(cliente.getApellido());
+		this.setDireccion(cliente.getDireccion());
+		this.setDni(cliente.getDni());
+		this.setEmail(cliente.getEmail());
+		this.setActivo(cliente.isActivo());
+	}
 }

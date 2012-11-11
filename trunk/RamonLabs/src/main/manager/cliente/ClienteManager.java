@@ -44,20 +44,26 @@ public class ClienteManager {
 	}
 	
 	
-	public static void Baja(int id) throws OperationException
+	public static void Baja(String idCliente) throws OperationException
 	{
+		if(!Validator.isNumeric(idCliente))
+			throw new OperationException("Id del cliente incorrecto");
+		int id = Integer.parseInt(idCliente);
+		
 		if(id <= 0)
 			throw new OperationException("Id del cliente incorrecto");
 		
 		Cliente cliente = (Cliente) Contexto.getBean("clienteBean");
 		Parametro param = new Parametro("id", id);
-		cliente = cliente.Load(param);
-		if(cliente == null)
+		cliente.Copy(cliente.Load(param));
+		if(cliente.getId() <= 0)
 			throw new OperationException("La Id no concuerda con ningun cliente");
+		
 		cliente.setActivo(false);
 		
 		cliente.update();
 	}
+	
 	
 	public static void Modificar(Cliente cliente) throws OperationException
 	{
@@ -109,8 +115,12 @@ public class ClienteManager {
 	
 	public static List<Cliente>ListarClientes(){
 		Cliente cliente =  (Cliente) Contexto.getBean("clienteBean");
-		return cliente.loadAll();
+		return cliente.select();
 	}
 	
-
+	public static List<Cliente>ListarClientesActivos(){
+		Cliente cliente =  (Cliente) Contexto.getBean("clienteBean");
+		Parametro param = new Parametro("activo", true);
+		return cliente.select(param);
+	}
 }
