@@ -14,40 +14,34 @@
 		<table>
 			<tbody>
 				<tr>
-<!-- 				habria que poner los labels con los datos del cliente -->
+<!-- 				la idea es mostrar los datos del cliente, y luengo eliminarlo, le pregunta ¿es hay que agregar otra .jsp? lo mismo pasaria con cuentas y las otras cosas -->
 					<td>DNI:</td>
 					<td>
 					<s:textfield name="dni"></s:textfield>
-					<!--<input type="text" name="dni" class="required number minlength" minlength="8" maxlength="8" />-->
 					</td>
 				</tr>
 				<tr> 
 					<td>Nombre:</td>
 					<td>
-					
-					<s:label name="nombre"></s:label>
-					<!--<input type="text" name="nombre" class="required" />-->
+					<s:label name="nombre"/>
 					</td>
 				</tr>
 				<tr>
 					<td>Apellido:</td>
 					<td>
-<!-- 					<s:label	name="apellido"></s:label> -->
-					<!--<input type="text" name="apellido" class="required" />-->
+					<s:label name="apellido"/>
 					</td>
 				</tr>
 				<tr>
 					<td>Direccion:</td>
 					<td>
-<!-- 					<s:label	name="direccion"></s:label> -->
-					<!--<input type="text" name="apellido" class="required" />-->
+					<s:label name="direccion"/>
 					</td>
 				</tr>
 				<tr>
 					<td>E-mail:</td>
 					<td>
-<!-- 					<s:label	name="email"></s:label> -->
-					<!--<input type="text" name="apellido" class="required" />-->
+					<s:label name="email"/>
 					</td>
 				</tr>
 				<tr>
