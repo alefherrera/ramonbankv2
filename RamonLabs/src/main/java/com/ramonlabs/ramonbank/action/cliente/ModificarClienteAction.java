@@ -1,6 +1,9 @@
 package com.ramonlabs.ramonbank.action.cliente;
 
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
 import utils.Contexto;
@@ -21,7 +24,8 @@ public class ModificarClienteAction extends ActionSupport implements SessionAwar
 	private String apellido;
 	private String direccion;
 	private String email;
-
+	private String idCliente;
+	
 	@Override
 	public String execute() throws Exception, OperationException{
 		
@@ -41,6 +45,11 @@ public class ModificarClienteAction extends ActionSupport implements SessionAwar
 	public void setSession(Map<String, Object> arg0) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	public ModificarClienteAction()
+	{
+		
 	}
 
 	public String getDni() {
@@ -82,5 +91,31 @@ public class ModificarClienteAction extends ActionSupport implements SessionAwar
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public String display()
+	{
+		HttpServletRequest request = ServletActionContext.getRequest();
+		setIdCliente(request.getParameter("idCliente"));
+		try {
+			Cliente cliente = ClienteManager.CargarCliente(getIdCliente());
+			setDni(cliente.getDni());
+			setApellido(cliente.getApellido());
+			setDireccion(cliente.getDireccion());
+			setEmail(cliente.getEmail());
+			setNombre(cliente.getNombre());
+			
+		} catch (OperationException e) {
+			return ERROR;
+		}
+		
+		return NONE;
+	}
 
+	public String getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(String idCliente) {
+		this.idCliente = idCliente;
+	}
 }
