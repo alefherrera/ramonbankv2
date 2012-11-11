@@ -9,14 +9,19 @@
 </head>
 <body>
 <h1>Modificar Cliente</h1>
-<s:form action="crearCliente">
+
+	<s:if test="error != null">
+		<s:text name="error"></s:text>
+	</s:if>	
+	
+<s:form action="submitmodificarCliente">
 
 		<table>
 			<tbody>
 				<tr>
 					<td>DNI:</td>
 					<td>
-					<s:textfield name="dni"></s:textfield>
+					<s:textfield readonly="true" name="dni"></s:textfield>
 					<!--<input type="text" name="dni" class="required number minlength" minlength="8" maxlength="8" />-->
 					</td>
 				</tr>

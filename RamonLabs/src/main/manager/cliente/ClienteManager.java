@@ -63,9 +63,10 @@ public class ClienteManager {
 	{
 		if(cliente == null)
 			throw new OperationException("El objeto cliente es null");
+		
+		cliente.setId(CargarClienteDNI(cliente.getDni()).getId());
 		if(cliente.getId() <= 0)
-			throw new OperationException("Id del cliente incorrecto");
-
+			throw new OperationException("Cliente no existente");
 		cliente.update();
 	}
 	
@@ -82,20 +83,27 @@ public class ClienteManager {
         	return false;
 	}
 	
-	public static Cliente CargarCliente(int idCliente)
+	public static Cliente CargarClienteID(int idCliente)
 	{
 		Cliente cliente = (Cliente) Contexto.getBean("clienteBean");
         Parametro parametro = new Parametro("id", idCliente);
         return cliente.Load(parametro);
 	}
 	
-	public static Cliente CargarCliente(String idCliente) throws OperationException
+	public static Cliente CargarClienteID(String idCliente) throws OperationException
 	{
 		Cliente cliente = (Cliente) Contexto.getBean("clienteBean");
 		if(!Validator.isNumeric(idCliente))
 			throw new OperationException("ID de cliente incorrecta");
 		
         Parametro parametro = new Parametro("id", Integer.parseInt(idCliente));
+        return cliente.Load(parametro);
+	}
+	
+	public static Cliente CargarClienteDNI(String DNI)
+	{
+		Cliente cliente = (Cliente) Contexto.getBean("clienteBean");
+        Parametro parametro = new Parametro("dni", DNI);
         return cliente.Load(parametro);
 	}
 	
