@@ -12,8 +12,6 @@ import utils.OperationException;
 import com.opensymphony.xwork2.ActionSupport;
 import com.ramonlabs.ramonbank.dbaccess.Cuenta;
 
-import cuenta.CuentaManager;
-
 public class ShowCuentasAction extends ActionSupport implements SessionAware {
 
 	private static final long serialVersionUID = 1L;
@@ -30,14 +28,11 @@ public class ShowCuentasAction extends ActionSupport implements SessionAware {
 
 	@Override
 	public String execute() throws Exception, OperationException {
-		
-//		setCuentas(CuentaManager.ListarCuentas());
 		return SUCCESS;
 	}
 
 	public void setSession(Map<String, Object> arg0) {
 		// TODO Auto-generated method stub
-
 	}
 	
 }
