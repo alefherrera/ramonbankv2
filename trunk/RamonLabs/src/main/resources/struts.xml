@@ -42,7 +42,7 @@
 			<result name="none">/clientes/bajacliente.jsp</result>
 			<result name="error">/clientes/clientes.jsp</result>
 		</action>
-			<action name="submitbajaCliente" class="com.ramonlabs.ramonbank.action.cliente.BajaClienteAction">
+		<action name="submitbajaCliente" class="com.ramonlabs.ramonbank.action.cliente.BajaClienteAction">
 			<result name="success">/index.jsp</result>
 			<result name="error">/clientes/bajacliente.jsp</result>
 		</action>
@@ -76,11 +76,11 @@
 			<result>/cuentas/modificarcuenta.jsp</result>
 		</action>
 
-		<action name="showcuentas">
+		<action name="showcuenta">
 			<result>/cuentas/showcuentas.jsp</result>
 		</action>
 		
-		<action name="crearCuenta" class="com.ramonlabs.ramonbank.action.cuenta.AltaCuentaAction">
+		<action name="crearCuenta" class="com.ramonlabs.ramonbank.action.AltaCuentaAction">
 			<result name="success">/index.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
@@ -95,10 +95,9 @@
 			<result name="error">/error.jsp</result>
 		</action>
 
-		<action name="showcuentas" class="com.ramonlabs.ramonbank.action.ShowCuentasAction">
-			<result name="success">/cuentas/showcuentas.jsp</result>
+		<action name="showCuenta" class="com.ramonlabs.ramonbank.action.ShowCuentasAction">
+			<result name="success">/servicios/showservicios.jsp</result>
 		</action>
-
 	</package>
 
 	<package name="prestamo" extends="struts-default" namespace="/">
