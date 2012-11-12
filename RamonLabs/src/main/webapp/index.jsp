@@ -14,7 +14,10 @@
 	
 	<li><a href=cuentaAction>Cuentas</a></li>
 	
-	<li><a href=servicioAction>Servicio</a></li>
+	<li><a href=servicioAction>Servicios</a></li>
+	
+	<li><a href=prestamoAction>Prestamos</a></li>
+	
 	</ul>
 	
 	<s:a action="strutsAction">Struts</s:a>

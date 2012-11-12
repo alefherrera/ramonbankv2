@@ -1,14 +1,16 @@
-package com.ramonlabs.ramonbank.action.cliente;
+package com.ramonlabs.ramonbank.action.prestamo;
 
 import java.util.List;
 import java.util.Map;
 
-import cliente.ClienteManager;
-import com.ramonlabs.ramonbank.dbaccess.Cliente;
 import org.apache.struts2.interceptor.SessionAware;
+
 import utils.OperationException;
 
+import cliente.ClienteManager;
+
 import com.opensymphony.xwork2.ActionSupport;
+import com.ramonlabs.ramonbank.dbaccess.Cliente;
 
 public class CargarClientesAction extends ActionSupport implements SessionAware {
 
