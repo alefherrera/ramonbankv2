@@ -1,122 +1,136 @@
 package com.ramonlabs.ramonbank.action.cuenta;
 
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
 import utils.Contexto;
+import utils.Enums;
+import utils.Enums.TIPO_CUENTA;
 import utils.OperationException;
+import utils.Validator;
 import cliente.ClienteManager;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.ramonlabs.ramonbank.dbaccess.Cliente;
+import com.ramonlabs.ramonbank.dbaccess.Cuenta;
+
+import cuenta.CuentaManager;
 
 public class AltaCuentaAction extends ActionSupport implements SessionAware{
 
 	private static final long serialVersionUID = 1L;
 	
-	private Integer cliente_id;
-	private Integer tipo;
-	private Boolean estado;
-	private double saldo;
-	private double descubierto;
-	private Boolean activo;
+	
+	private String tipo;
+	private String error;
+	private String dni;
+	private String idCliente;
+	private List<TIPO_CUENTA> tipos;
 	
 	@Override
-	public String execute() throws Exception, OperationException{
-		
-		//Cargo todo el cliente y lo mando a ClienteManager.Registro, esta clase valida cliente y devuelve una excepcion (OperationException) o grava en la db.
+	public String execute() throws Exception{
+    	Cuenta cuenta = (Cuenta) Contexto.getBean("cuentaBean");
     	
-    	Cliente cliente = (Cliente) Contexto.getBean("clienteBean");
+    	if(!Validator.isNumeric(getIdCliente())){
+    		setError("Id incorrecto");
+    		return ERROR;
+    	}
     	
-		/*cliente.setDni(dni);
-		cliente.setNombre(nombre);
-		cliente.setApellido(apellido);
-		cliente.setDireccion(direccion);
-		cliente.setEmail(email);*/
-		
-		ClienteManager.Registro(cliente);
-		
-		if (cliente_id == null || cliente_id==0)
+    	if(!Validator.isNumeric(tipo)){
+    		setError("Tipo incorrecto");
+    		
+    		return ERROR;
+    	}
+    	
+    	cuenta.setTipo(Integer.parseInt(tipo));
+    	cuenta.setIdCliente(Integer.parseInt(getIdCliente()));
+    	
+		try{
+			CuentaManager.Registro(cuenta);
+		}
+		catch(OperationException ex)
+		{
+			setError(ex.getMessage());
+			display();
 			return ERROR;
+		}
 		return SUCCESS;
 	}
-
-	public Integer getCliente_id() {
-		return cliente_id;
+	
+	public String display() throws Exception{
+		tipos = new ArrayList<TIPO_CUENTA>();
+		
+		for(TIPO_CUENTA tipo : Enums.TIPO_CUENTA.values()){
+			tipos.add(tipo);
+		}
+		
+		HttpServletRequest request = ServletActionContext.getRequest();
+		if(!(request.getParameter("idCliente") == null))
+			setIdCliente(request.getParameter("idCliente"));
+		try{
+			Cliente cliente = ClienteManager.CargarClienteID(getIdCliente());
+			setDni(cliente.getDni());
+		}
+		catch(OperationException ex)
+		{
+			setError(ex.getMessage());
+			return ERROR;
+		}
+	
+		return NONE;
 	}
-
-
-
-	public void setCliente_id(Integer cliente_id) {
-		this.cliente_id = cliente_id;
-	}
-
-
-
-	public Integer getTipo() {
+	
+	public String getTipo() {
 		return tipo;
 	}
 
-
-
-	public void setTipo(Integer tipo) {
+	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-
-
-
-	public Boolean getEstado() {
-		return estado;
-	}
-
-
-
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
-	}
-
-
-
-	public double getSaldo() {
-		return saldo;
-	}
-
-
-
-	public void setSaldo(double saldo) {
-		this.saldo = saldo;
-	}
-
-
-
-	public double getDescubierto() {
-		return descubierto;
-	}
-
-
-
-	public void setDescubierto(double descubierto) {
-		this.descubierto = descubierto;
-	}
-
-
-
-	public Boolean getActivo() {
-		return activo;
-	}
-
-
-
-	public void setActivo(Boolean activo) {
-		this.activo = activo;
-	}
-
 
 
 	public void setSession(Map<String, Object> arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	public String getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(String idCliente) {
+		this.idCliente = idCliente;
+	}
+
+	public List getTipos() {
+		return tipos;
+	}
+
+	public void setTipos(List tipos) {
+		this.tipos = tipos;
 	}
 	
 }

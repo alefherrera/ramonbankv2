@@ -44,6 +44,7 @@ public class BajaClienteAction extends ActionSupport implements SessionAware {
 		catch(OperationException ex)
 		{
 			error = ex.getMessage();
+			display();
 			return ERROR;
 		}
 		return SUCCESS;
@@ -51,7 +52,8 @@ public class BajaClienteAction extends ActionSupport implements SessionAware {
 
 	public String display(){
 		HttpServletRequest request = ServletActionContext.getRequest();
-		setId((request.getParameter("idCliente")));
+		if(request.getParameter("idCliente") != null)
+			setId((request.getParameter("idCliente")));
 		try {
 			Cliente cliente = ClienteManager.CargarClienteID(getId());
 			setDni(cliente.getDni());
@@ -61,6 +63,7 @@ public class BajaClienteAction extends ActionSupport implements SessionAware {
 			setNombre(cliente.getNombre());
 			
 		} catch (OperationException e) {
+			setError(e.getMessage());
 			return ERROR;
 		}
 		

@@ -1,5 +1,9 @@
 package cuenta;
 
+import java.util.List;
+
+import cliente.ClienteManager;
+
 import com.ramonlabs.ramonbank.dbaccess.Cuenta;
 import com.ramonlabs.ramonbank.dbaccess.Parametro;
 
@@ -23,15 +27,16 @@ public class CuentaManager {
         if (cuenta.getIdCliente()<0){
         	throw new OperationException("idCliente incorrecta");
         }
-        if (!cliente.ClienteManager.ExisteCliente(cuenta.getIdCliente()))
+        if (!ClienteManager.ExisteCliente(cuenta.getIdCliente()))
         	throw new OperationException("idCliente asignado a la cuenta no existe en la db");
         
         cuenta.setSaldo(0);
         cuenta.setDescubierto(0);
+        cuenta.setActivo(true);
         
-        Parametro p_IDCliente = new Parametro("IdCliente", cuenta.getIdCliente());
+        Parametro p_IDCliente = new Parametro("idCliente", cuenta.getIdCliente());
         Parametro p_Tipo = new Parametro("tipo", cuenta.getTipo());
-        Parametro p_Activo = new Parametro("activo", 1);
+        Parametro p_Activo = new Parametro("activo", true);
         
         //TODO: Ale, ver como hacer para que funcione el select al mandar dos parametros!
         int CuentaCantidad = cuenta.select(p_Tipo, p_IDCliente, p_Activo).size();
@@ -56,9 +61,8 @@ public class CuentaManager {
 		
 		Cuenta cuenta = (Cuenta) Contexto.getBean("cuentaBean");
 		Parametro param = new Parametro("id", id);
-		cuenta = cuenta.Load(param);
-		if(cuenta == null)
-			throw new OperationException("La Id no concuerda con ningun cuenta");
+		cuenta.Copy(cuenta.Load(param));
+		
 		cuenta.setActivo(false);
 		
 		cuenta.update();
@@ -74,17 +78,21 @@ public class CuentaManager {
 		cuenta.update();
 	}
 	
-	public static void Depositar(Cuenta cuenta, int monto) throws OperationException
+	public static void Depositar(Cuenta cuenta, String smonto) throws OperationException
 	{
 		if(cuenta == null)
 			throw new OperationException("El objeto cuenta es null");
 		if(cuenta.getId() <= 0)
 			throw new OperationException("Seleccione una cuenta");
+		if(!Validator.isNumeric(smonto))
+			throw new OperationException("Monto Incorrecto");
+		Double monto = Double.parseDouble(smonto);
+		
 		if(monto <= 0)
 			throw new OperationException("Monto incorrecto");
 		
         Parametro P_Id = new Parametro("id", cuenta.getId());
-        cuenta = cuenta.Load(P_Id);
+        cuenta.Copy(cuenta.Load(P_Id));
     
 
         double _costoMovimiento = Enums.TIPO_CUENTA.get_enum(cuenta.getTipo())
@@ -106,17 +114,21 @@ public class CuentaManager {
         return;
 	}
 	
-	public static void Extraer(Cuenta cuenta, int monto) throws OperationException
+	public static void Extraer(Cuenta cuenta, String smonto) throws OperationException
 	{
 		if(cuenta == null)
 			throw new OperationException("El objeto cuenta es null");
 		if(cuenta.getId() <= 0)
 			throw new OperationException("Seleccione una cuenta");
+
+		if(!Validator.isNumeric(smonto))
+			throw new OperationException("Monto Incorrecto");
+		double monto = Double.parseDouble(smonto);
 		if(monto <= 0)
 			throw new OperationException("Monto incorrecto");
 		
 		Parametro P_Id = new Parametro("id", cuenta.getId());
-        cuenta = cuenta.Load(P_Id);
+        cuenta.Copy(cuenta.Load(P_Id));
 	    
 
         double _costoMovimiento = Enums.TIPO_CUENTA.get_enum(cuenta.getTipo())
@@ -129,6 +141,8 @@ public class CuentaManager {
 
         cuenta.setSaldo(cuenta.getSaldo() - monto - monto
                         * _costoMovimiento);
+        
+        
         cuenta.update();
 
 //        double montoTotal = _monto + (_monto * _costoMovimiento);
@@ -141,5 +155,11 @@ public class CuentaManager {
 //        _movimiento.Insert();
 	}
 	
-
+	public static List<Cuenta> ListarCuentasActivas(int idCliente) throws OperationException{
+		Cuenta cuenta = (Cuenta) Contexto.getBean("cuentaBean");
+		Parametro param = new Parametro("idCliente", idCliente);
+		Parametro param_activo = new Parametro("activo", true);
+		
+		return cuenta.select(param, param_activo);
+	}
 }

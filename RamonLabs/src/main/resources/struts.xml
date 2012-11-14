@@ -25,10 +25,10 @@
 			<result>/clientes/altacliente.jsp</result>
 		</action>
 
+
 		<action name="showClientes" class="com.ramonlabs.ramonbank.action.cliente.ShowClientesAction">
 			<result name="success">/clientes/showclientes.jsp</result>
 		</action>
-		
 		<action name="clienteAction" class="com.ramonlabs.ramonbank.action.cliente.CargarClientesAction">
 			<result name="success">/clientes/clientes.jsp</result>
 		</action>
@@ -42,10 +42,11 @@
 			<result name="none">/clientes/bajacliente.jsp</result>
 			<result name="error">/clientes/clientes.jsp</result>
 		</action>
-		<action name="submitbajaCliente" class="com.ramonlabs.ramonbank.action.cliente.BajaClienteAction">
+			<action name="submitbajaCliente" class="com.ramonlabs.ramonbank.action.cliente.BajaClienteAction">
 			<result name="success">/index.jsp</result>
 			<result name="error">/clientes/bajacliente.jsp</result>
 		</action>
+		
 		
 		<action name="modificarCliente" class="com.ramonlabs.ramonbank.action.cliente.ModificarClienteAction" method="display">
 			<result name="none">/clientes/modificarcliente.jsp</result>
@@ -59,88 +60,55 @@
 	</package>
 
 	<package name="cuentas" extends="struts-default" namespace="/">
+		<action name="cuentaAction" class="com.ramonlabs.ramonbank.action.cuenta.CargarCuentasAction">
+			<result name="success">/cuentas/cuentas.jsp</result>
+		</action>
+		
+		<action name="altacuenta" class="com.ramonlabs.ramonbank.action.cuenta.AltaCuentaAction" method="display">
+			<result name="none">/cuentas/altacuenta.jsp</result>
+			<result name="error">/cuentas/cuentas.jsp</result>
+		</action>
+		<action name="submitaltacuenta" class="com.ramonlabs.ramonbank.action.cuenta.AltaCuentaAction">
+			<result name="success">/index.jsp</result>
+			<result name="error">/cuentas/altacuenta.jsp</result>
+		</action>
+
+		<action name="bajacuenta" class="com.ramonlabs.ramonbank.action.cuenta.BajaCuentaAction" method="display">
+			<result name="none">/cuentas/bajacuenta.jsp</result>
+			<result name="error">/cuentas/cuentas.jsp</result>
+		</action>
+		<action name="submitbajacuenta" class="com.ramonlabs.ramonbank.action.cuenta.BajaCuentaAction">
+			<result name="success">/index.jsp</result>
+			<result name="error">/cuentas/bajacuenta.jsp</result>
+		</action>
+
 	
-		<action name="altacuenta" class="com.ramonlabs.ramonbank.action.cuenta.CargaComboAltaCuentaAction">
-			<result name="success">/cuentas/altacuenta.jsp</result>
-		</action>
-
-		<action name="bajacuenta">
-			<result>/cuentas/bajacuenta.jsp</result>
-		</action>
-
-		<action name="cuentaAction">
-			<result>/cuentas/cuentas.jsp</result>
-		</action>
-
-		<action name="modificarcuenta">
-			<result>/cuentas/modificarcuenta.jsp</result>
-		</action>
-
-		<action name="showcuenta">
-			<result>/cuentas/showcuentas.jsp</result>
+		<action name="showcuenta" class="com.ramonlabs.ramonbank.action.cuenta.ShowCuentasAction">
+			<result name="success">/cuentas/showcuentas.jsp</result>
+			<result name="error">/cuentas/cuentas.jsp</result>
 		</action>
 		
-		<action name="crearCuenta" class="com.ramonlabs.ramonbank.action.AltaCuentaAction">
+		
+		<action name="extraccion" class="com.ramonlabs.ramonbank.action.cuenta.ExtraccionAction" method="display">
+			<result name="none">/cuentas/extraccion.jsp</result>
+			<result name="error">/cuentas/cuentas.jsp</result>
+		</action>
+		<action name="submitextraccion" class="com.ramonlabs.ramonbank.action.cuenta.ExtraccionAction">
 			<result name="success">/index.jsp</result>
-			<result name="error">/error.jsp</result>
+			<result name="error">/cuentas/extraccion.jsp</result>
 		</action>
 		
-		<action name="borrarCuenta" class="com.ramonlabs.ramonbank.action.BajaCuentaAction">
-			<result name="success">/index.jsp</result>
-			<result name="error">/error.jsp</result>
+		<action name="deposito" class="com.ramonlabs.ramonbank.action.cuenta.DepositoAction" method="display">
+			<result name="none">/cuentas/deposito.jsp</result>
+			<result name="error">/cuentas/cuentas.jsp</result>
 		</action>
-		
-		<action name="modificarCuenta" class="com.ramonlabs.ramonbank.action.ModificarCuentaAction">
+		<action name="submitdeposito" class="com.ramonlabs.ramonbank.action.cuenta.DepositoAction">
 			<result name="success">/index.jsp</result>
-			<result name="error">/error.jsp</result>
-		</action>
-
-		<action name="showCuenta" class="com.ramonlabs.ramonbank.action.ShowCuentasAction">
-			<result name="success">/servicios/showservicios.jsp</result>
+			<result name="error">/cuentas/deposito.jsp</result>
 		</action>
 	</package>
 
 	<package name="prestamo" extends="struts-default" namespace="/">
-	
-		<action name="altaprestamo" >
-			<result name="success">/prestamos/altaprestamo.jsp</result>
-		</action>
-
-		<action name="bajaprestamo">
-			<result>/prestamos/bajaprestamo.jsp</result>
-		</action>
-
-		<action name="prestamoAction" class="com.ramonlabs.ramonbank.action.prestamo.CargarClientesAction">
-			<result>/prestamos/prestamos.jsp</result>
-		</action>
-
-		<action name="modificarprestamo">
-			<result>/prestamos/modificarprestamo.jsp</result>
-		</action>
-
-		<action name="showprestamos">
-			<result>/prestamos/showprestamos.jsp</result>
-		</action>
-		
-		<action name="crearPrestamo" class="com.ramonlabs.ramonbank.action.AltaPrestamoAction">
-			<result name="success">/index.jsp</result>
-			<result name="error">/error.jsp</result>
-		</action>
-		
-		<action name="borrarPrestamo" class="com.ramonlabs.ramonbank.action.BajaPrestamoAction">
-			<result name="success">/index.jsp</result>
-			<result name="error">/error.jsp</result>
-		</action>
-		
-		<action name="modificarPrestamo" class="com.ramonlabs.ramonbank.action.ModificarPrestamoAction">
-			<result name="success">/index.jsp</result>
-			<result name="error">/error.jsp</result>
-		</action>
-
-		<action name="showPrestamo" class="com.ramonlabs.ramonbank.action.ShowPrestamosAction">
-			<result name="success">/prestamos/showprestamos.jsp</result>
-		</action>
-	
 	</package>
 	
 	<package name="servicio" extends="struts-default" namespace="/">

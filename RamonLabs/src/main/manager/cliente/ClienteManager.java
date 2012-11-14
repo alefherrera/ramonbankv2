@@ -37,7 +37,7 @@ public class ClienteManager {
         
         
         
-        if (ExisteCliente(Integer.parseInt(cliente.getDni())))
+        if (ExisteCliente(cliente.getDni()))
         	throw new OperationException("El DNI ya existe");
         
         cliente.save();
@@ -77,13 +77,25 @@ public class ClienteManager {
 	}
 	
 	//Devuelve true si el cliente existe
-	public static boolean ExisteCliente(int DNI)
+	public static boolean ExisteCliente(String DNI)
 	{
 		Cliente clienteDNI = (Cliente) Contexto.getBean("clienteBean");
         Parametro param = new Parametro("dni", DNI);
 		Parametro param_activo = new Parametro("activo", true);
         
         if (clienteDNI.select(param, param_activo).size()>0)
+        	return true;
+        else
+        	return false;
+	}
+	
+	public static boolean ExisteCliente(int Id)
+	{
+		Cliente clienteID = (Cliente) Contexto.getBean("clienteBean");
+        Parametro param = new Parametro("id", Id);
+		Parametro param_activo = new Parametro("activo", true);
+        
+        if (clienteID.select(param, param_activo).size()>0)
         	return true;
         else
         	return false;

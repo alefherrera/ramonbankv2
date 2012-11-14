@@ -9,55 +9,22 @@
 </head>
 <body>
 <h1>Baja Cuenta</h1>
-<s:form action="borrarCuenta">
-		<table>
-			<tbody>
-				<tr>
-					<td>ID Cuenta:</td>
-					<td>
-					<s:textfield name="id"></s:textfield>
-					</td>
-				</tr>
-				<tr>
-					<td>Cliente:</td>
-					<td>
-					<s:textfield name="dni"></s:textfield>
-					</td>
-				</tr>
-				<tr> 
-					<td>Tipo:</td>
-					<td>
-					<s:label name="tipo"/>
-					</td>
-				</tr>
-				<tr>
-					<td>Descubierto:</td>
-					<td>
-					<s:label name="descubierto"/>
-					</td>
-				</tr>
-				<tr>
-					<td>Saldo:</td>
-					<td>
-					<s:label name="saldo"/>
-					</td>
-				</tr>
-				<tr>
-					<td>Estado:</td>
-					<td>
-					<s:if test="estado==1">
-						<s:label value="Activo"/>
-					</s:if>
-					<s:elseif test="estado==0">
-						<s:label value="Desactivo"/>
-					</s:elseif>
-					</td>
-				</tr>
-				<tr>
-					<td><input type="submit" value="Entrar"></input></td>
-				</tr>
-			</tbody>
-		</table>
-</s:form>
+	<table border="1">
+	<thead><tr>
+	<th>Tipo de Cuenta</th>
+	<th>Saldo</th>
+	<th>Descubierto</th>
+	
+	</tr>
+	</thead>
+		<s:iterator value="cuentas">
+		<tr>
+			<td><s:property value="tipo_nombre" /></td>
+			<td><s:property value="saldo" /></td>
+			<td><s:property value="descubierto" /></td>
+			<td><a href="submitbajacuenta?idCuenta=<s:property value="id"/>" >Eliminar</a></td>
+		</tr>
+		</s:iterator>
+	</table>
 </body>
 </html>

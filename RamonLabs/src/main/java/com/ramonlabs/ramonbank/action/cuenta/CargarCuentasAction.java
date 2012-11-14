@@ -7,7 +7,7 @@ import cliente.ClienteManager;
 import com.opensymphony.xwork2.ActionSupport;
 import com.ramonlabs.ramonbank.dbaccess.Cliente;
 
-public class CargaComboAltaCuentaAction extends ActionSupport {
+public class CargarCuentasAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -31,7 +31,7 @@ public class CargaComboAltaCuentaAction extends ActionSupport {
 	}
 	@Override
 	public String execute() {
-		setClientes(ClienteManager.ListarClientes());
+		setClientes(ClienteManager.ListarClientesActivos());
 		return SUCCESS;
 	}
 	
