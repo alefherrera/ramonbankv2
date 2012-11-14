@@ -9,10 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
-import utils.Enums;
+import utils.Contexto;
 import utils.OperationException;
-import utils.Enums.TIPO_CUENTA;
-import utils.Validator;
 
 import cliente.ClienteManager;
 
@@ -22,35 +20,34 @@ import com.ramonlabs.ramonbank.dbaccess.Cuenta;
 
 import cuenta.CuentaManager;
 
-public class BajaCuentaAction  extends ActionSupport implements SessionAware{
+public class DepositoAction extends ActionSupport implements SessionAware {
 	
 	private static final long serialVersionUID = 1L;
-
-	private String id;
+	
 	private String idCliente;
+	private String idCuenta;
 	private List<Cuenta> cuentas;
 	private String error;
-	
-	public void setSession(Map<String, Object> arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	private String monto;
 	
 	@Override
 	public String execute() throws Exception{
-		HttpServletRequest request = ServletActionContext.getRequest();
+		Cuenta cuenta = (Cuenta) Contexto.getBean("cuentaBean");
+		cuenta.setId(Integer.parseInt(getIdCuenta()));
+		
 		try{
-			CuentaManager.Baja(Integer.parseInt(request.getParameter("idCuenta")));
-		}
-		catch(OperationException ex)
+			CuentaManager.Depositar(cuenta, getMonto());			
+		}catch(OperationException ex)
 		{
-			display();
 			setError(ex.getMessage());
+			display();
 			return ERROR;
 		}
+		
 		return SUCCESS;
 	}
-	
+
+
 	
 	public String display() throws Exception{
 		HttpServletRequest request = ServletActionContext.getRequest();
@@ -58,29 +55,31 @@ public class BajaCuentaAction  extends ActionSupport implements SessionAware{
 			setIdCliente(request.getParameter("idCliente"));
 		try{
 			Cliente cliente = ClienteManager.CargarClienteID(getIdCliente());
-			setIdCliente(String.valueOf(cliente.getId()));
-			if(!Validator.isNumeric(getIdCliente()))
-				throw new OperationException("Error de query string");
-			
-			setCuentas(CuentaManager.ListarCuentasActivas(Integer.parseInt(getIdCliente())));
+			cuentas = CuentaManager.ListarCuentasActivas(cliente.getId());
 		}
 		catch(OperationException ex)
 		{
 			setError(ex.getMessage());
 			return ERROR;
-
 		}
-	
+		
 		return NONE;
 	}
-
-
+	
 	public String getIdCliente() {
 		return idCliente;
 	}
 
 	public void setIdCliente(String idCliente) {
 		this.idCliente = idCliente;
+	}
+
+	public List<Cuenta> getCuentas() {
+		return cuentas;
+	}
+
+	public void setCuentas(List<Cuenta> cuentas) {
+		this.cuentas = cuentas;
 	}
 
 	public String getError() {
@@ -91,11 +90,34 @@ public class BajaCuentaAction  extends ActionSupport implements SessionAware{
 		this.error = error;
 	}
 
-	public List<Cuenta> getCuentas() {
-		return cuentas;
+
+
+	public void setSession(Map<String, Object> arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
-	public void setCuentas(List<Cuenta> cuentas) {
-		this.cuentas = cuentas;
+
+
+	public String getIdCuenta() {
+		return idCuenta;
+	}
+
+
+
+	public void setIdCuenta(String idCuenta) {
+		this.idCuenta = idCuenta;
+	}
+
+
+
+	public String getMonto() {
+		return monto;
+	}
+
+
+
+	public void setMonto(String monto) {
+		this.monto = monto;
 	}
 }

@@ -5,34 +5,34 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Crear Cuenta</title>
+<title>Extracción</title>
 </head>
 <body>
-<h1>Alta Cuenta</h1>
+<h1>Extracción</h1>
 
 	<s:if test="error != null">
 		<s:text name="error"></s:text>
 	</s:if>
 	
-<s:form action="submitaltacuenta">
+<s:form action="submitextraccion">
 <s:hidden name="idCliente"></s:hidden>
 		<table>
 			<tbody>
 				<tr>
-					<td>
-					<s:label label="Cliente:" name="dni" />
-					</td>
+					<s:select label="Seleccionar Cuenta" name="idCuenta" list="cuentas" listKey="id" listValue="nombre_combo" ></s:select>
 				</tr>
-				<tr> 
-					<s:select label="Selecion tipo"
-						headerKey="-1" headerValue="--- Seleccione ---" listValue="nombre" listKey="id" list="tipos" name="tipo" />
-				</tr>
+				
 				<tr>
-					<td><input type="submit" value="Dar de Alta"></input></td>
+				<td>
+					<s:textfield label="Ingrese Monto" name="monto"></s:textfield>
+				</td>
+				</tr>
+				
+				<tr>
+					<td><input type="submit" value="Extraer"></input></td>
 				</tr>
 			</tbody>
 		</table>
-
 </s:form>
 </body>
 </html>

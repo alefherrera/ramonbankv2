@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Crear Cliente</title>
 </head>
+<s:include value="/estructura/header.jsp"></s:include>
 <body>
-	<s:include value="/estructura/header.jsp"></s:include>
 	<h1>Alta Cliente</h1>
 	
 	<s:if test="error != null">

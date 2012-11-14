@@ -6,6 +6,8 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import utils.Enums;
+
 @Entity
 @Table(name = "cuentas")
 public class Cuenta extends TableBase<Cuenta> implements Serializable {
@@ -43,6 +45,13 @@ public class Cuenta extends TableBase<Cuenta> implements Serializable {
 	@JoinColumn(name="idCliente")
 	private Cliente cliente;*/
 	
+	public String getTipo_nombre() {
+		return Enums.TIPO_CUENTA.get_enum(this.tipo).getNombre();
+	}
+
+	public String getNombre_combo(){
+		return Enums.TIPO_CUENTA.get_enum(this.tipo).getNombre() + " " + String.valueOf(this.getSaldo());
+	}
 	public int getId() {
 		return id;
 	}
@@ -104,5 +113,13 @@ public class Cuenta extends TableBase<Cuenta> implements Serializable {
 		this.activo = activo;
 	}
 	
-	
+	public void Copy(Cuenta cuenta){
+		this.id = cuenta.id;
+		this.idCliente = cuenta.idCliente;
+		this.tipo = cuenta.tipo;
+		this.estado = cuenta.estado;
+		this.saldo = cuenta.saldo;
+		this.descubierto = cuenta.descubierto;
+		this.activo = cuenta.activo;
+	}
 }

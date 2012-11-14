@@ -51,6 +51,7 @@ public class ModificarClienteAction extends ActionSupport implements SessionAwar
 		catch(OperationException ex)
 		{
 			error = ex.getMessage();
+			display();
 			return ERROR;
 		}
 		
@@ -110,7 +111,8 @@ public class ModificarClienteAction extends ActionSupport implements SessionAwar
 	public String display()
 	{
 		HttpServletRequest request = ServletActionContext.getRequest();
-		setIdCliente(request.getParameter("idCliente"));
+		if(request.getParameter("idCliente") != null)
+			setIdCliente(request.getParameter("idCliente"));
 		try {
 			Cliente cliente = ClienteManager.CargarClienteID(getIdCliente());
 			setDni(cliente.getDni());
@@ -120,6 +122,7 @@ public class ModificarClienteAction extends ActionSupport implements SessionAwar
 			setNombre(cliente.getNombre());
 			
 		} catch (OperationException e) {
+			setError(e.getMessage());
 			return ERROR;
 		}
 		

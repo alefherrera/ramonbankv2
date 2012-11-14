@@ -9,28 +9,21 @@
 </head>
 <body>
 	<h1>Show Cuentas All</h1>
-		<table border="1">
-		<thead><tr>
-		<th>ID</th>
-		<th>CLIENTE</th>
-		<th>TIPO</th>
-		<th>ESTADO</th>
-		<th>SALDO</th>
-		<th>DESCUBIERTO</th>
-<!-- 		<th>ACTIVO</th> -->
-		
+			<table border="1">
+	<thead><tr>
+	<th>Tipo de Cuenta</th>
+	<th>Saldo</th>
+	<th>Descubierto</th>
+	
+	</tr>
+	</thead>
+		<s:iterator value="cuentas">
+		<tr>
+			<td><s:property value="tipo_nombre" /></td>
+			<td><s:property value="saldo" /></td>
+			<td><s:property value="descubierto" /></td>
 		</tr>
-		</thead>
-			<s:iterator value="cuentas">
-				<tr>
-					<td><s:property value="id" /></td>
-					<td><s:property value="cliente_id" /></td>
-					<td><s:property value="tipo" /></td>
-					<td><s:property value="estado" /></td>
-					<td><s:property value="saldo" /></td>
-					<td><s:property value="descubierto" /></td>
-				</tr>
-			</s:iterator>
-		</table>
+		</s:iterator>
+	</table>
 </body>
 </html>
